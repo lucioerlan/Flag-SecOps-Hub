@@ -8,7 +8,7 @@ server.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
   return 'Hello World'
 })
 
-server.listen({ port: 3000 }, (err: Error, address: string) => {
+server.listen({ port: 5000 }, (err: Error, address: string) => {
   if (err) {
     server.log.error(err)
     process.exit(1)
