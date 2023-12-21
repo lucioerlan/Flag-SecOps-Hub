@@ -5,7 +5,7 @@ module.exports = {
   verbose: true,
   setupFiles: ['./test/setup.js'],
   testPathIgnorePatterns: ['/node_modules/'],
-  modulePathIgnorePatterns: ['<rootDir>/build/'],
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
@@ -19,5 +19,5 @@ module.exports = {
   },
   maxWorkers: 2,
   cacheDirectory: '/tmp/jest',
-  watchPathIgnorePatterns: ['/node_modules/', '/build']
+  watchPathIgnorePatterns: ['/node_modules/', '/dist']
 }
