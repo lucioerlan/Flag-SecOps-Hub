@@ -1,0 +1,78 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "node": true
+  },
+  "parserOptions": {
+    "project": [
+      "**/tsconfig.json"
+    ]
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "jest",
+    "prettier",
+    "@typescript-eslint",
+    "eslint-plugin-import-helpers"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:promise/recommended"
+  ],
+  "rules": {
+    "space-before-function-parent": 0,
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ],
+    "no-console": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "@typescript-eslint/no-unnecessary-type-assertion": "error",
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/method-signature-style": [
+      "error",
+      "method"
+    ],
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "@typescript-eslint/no-throw-literal": "error",
+    "@typescript-eslint/no-misused-promises": "error",
+    "@typescript-eslint/no-require-imports": "error"
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "build/**/*",
+    "**/__mocks__/**/*",
+    "**/coverage/**/*",
+    ".eslintrc.js",
+    "commitlint.config.js",
+    "jest.config.ts",
+    "newrelic.js",
+    ".lintstagedrc"
+  ],
+  "settings": {
+    "typescript": {},
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    }
+  }
+}
