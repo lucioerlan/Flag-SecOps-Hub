@@ -1,0 +1,27 @@
+# Versioning and metadata
+.git
+.github
+.gitignore
+
+# Build dependencies
+coverage
+dockerfiles
+dist
+node_modules
+tests
+
+# Environment (contains sensitive data)
+.env
+
+# Files not required for production
+.editorconfig
+.eslintrc.json
+.nvmrc
+.prettierignore
+.prettierrc.json
+.vscode
+.yarn
+.yarnrc.yml
+nodemon.json
+sonar-project.properties
+*.md
