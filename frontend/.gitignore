@@ -1261,4 +1261,5 @@ FodyWeavers.xsd
 .env.test.local
 .env.production.local
 
-/build
+# End of https://www.toptal.com/developers/gitignore/api/git,node,linux,macos,windows
+dist/
