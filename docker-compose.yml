@@ -1,11 +1,11 @@
 version: "3.8"
-
 volumes:
   backend_node_modules:
   frontend_node_modules:
   db_data:
 
 services:
+  ####################### Backend  #######################
   backend:
     container_name: backend
     build:
@@ -23,7 +23,7 @@ services:
     restart: on-failure
     depends_on:
       - database
-
+  ####################### Frontend #######################
   frontend:
     container_name: frontend
     build:
@@ -37,7 +37,7 @@ services:
     environment:
       NODE_ENV: production
     restart: on-failure
-
+  ####################### Database #######################
   database:
     image: mongo:6.0
     container_name: database

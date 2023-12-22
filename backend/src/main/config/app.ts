@@ -1,17 +1,11 @@
-import fastify, { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
+import 'dotenv/config'
+import { FastifyAdapter, IFastifyAdapter } from '@/main/adapters'
+import { routes } from '@/main/routes'
+import { Routes } from '@/presentation/protocols'
 
-const server: FastifyInstance = fastify({
-  logger: true
-})
+const main = async (): Promise<void> => {
+  const fastifyAdapter: IFastifyAdapter = new FastifyAdapter(routes as Routes[], 5000)
+  await fastifyAdapter.start()
+}
 
-server.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
-  return 'Hello World'
-})
-
-server.listen({ port: 5000, host: '0.0.0.0' }, (err: Error, address: string) => {
-  if (err) {
-    server.log.error(err)
-    process.exit(1)
-  }
-  server.log.info(`Server listening at ${address}`)
-})
+main()
