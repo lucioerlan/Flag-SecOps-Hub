@@ -54,11 +54,12 @@
     ],
     "@typescript-eslint/no-throw-literal": "error",
     "@typescript-eslint/no-misused-promises": "error",
-    "@typescript-eslint/no-require-imports": "error"
+    "@typescript-eslint/no-require-imports": "error",
+    "@typescript-eslint/no-namespace": "off"
   },
   "ignorePatterns": [
     "node_modules",
-    "dist/**/*",
+    "**/dist/**/*",
     "**/__mocks__/**/*",
     "**/coverage/**/*",
     ".eslintrc.js",
