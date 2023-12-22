@@ -1,16 +1,32 @@
-# Dockerfile.frontend
-FROM node:20
+# build
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-COPY ./frontend/package*.json ./
+COPY . ./
 
-RUN npm install
+# install dependencies and build
+RUN npm ci \
+    && npm run build
 
-COPY ./frontend/ .
+# release
+FROM node:20-alpine
 
-RUN npm run build
+WORKDIR /app
 
-EXPOSE 3000
+# copy
+COPY --from=builder /app/package*.json /app/
+COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/dist /app/dist
 
+# Grant permissions for the appuser
+RUN addgroup -S appuser && adduser -S appuser -G appuser \
+    && chown -R appuser:appuser /app/ \
+    && chmod 756 /app/
+
+# Change to non-root privilege
+USER appuser
+
+# Setting the command to start your application
 CMD ["npm", "start"]
+
