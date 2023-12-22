@@ -1,20 +1,24 @@
-import { IFeatureFlags } from '@/domain/usecases/list-feature-flags/feature-flags'
+import { IListFeatureFlags } from '@/domain/usecases/list-feature-flags/list-feature-flags'
 
-export class ListFeatureFlagsUsecase implements IFeatureFlags {
-  async listFeatureFlags(): Promise<object> {
-    return {
-      listFeatureFlags: [
-        {
-          name: 'feature-1',
-          description: 'feature-1 description',
-          enabled: true
-        },
-        {
-          name: 'feature-2',
-          description: 'feature-2 description',
-          enabled: false
-        }
-      ]
-    }
+export class ListFeatureFlagsUsecase implements IListFeatureFlags {
+  async listFeatureFlags(): Promise<IListFeatureFlags.Result> {
+    return [
+      {
+        id: '1',
+        name: 'Nova Interface',
+        description: 'Libera a nova interface do usuário',
+        state: true,
+        created_at: '2023-12-22T12:00:00Z',
+        updated_at: '2023-12-22T12:00:00Z'
+      },
+      {
+        id: '2',
+        name: 'Modo Escuro',
+        description: 'Ativa o modo escuro no aplicativo',
+        state: false,
+        created_at: '2023-12-21T11:00:00Z',
+        updated_at: '2023-12-21T11:00:00Z'
+      }
+    ]
   }
 }
