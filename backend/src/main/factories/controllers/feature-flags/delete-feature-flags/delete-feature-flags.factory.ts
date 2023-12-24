@@ -1,6 +1,6 @@
 import { makeLogControllerDecorator } from '@/main/factories/decorators'
-import { makeDeleteFeatureFlagUsecase } from '@/main/factories/usecases/delete-feature-flags/delete-feature-flags.factory'
-import { DeleteFeatureFlagController } from '@/presentation/controllers/delete-feature-flags/delete-feature-flags.controller'
+import { makeDeleteFeatureFlagUsecase } from '@/main/factories/usecases/feature-flags'
+import { DeleteFeatureFlagController } from '@/presentation/controllers/feature-flags'
 import { Controller } from '@/presentation/protocols'
 
 export const makeDeleteFeatureFlagController = (): Controller => {

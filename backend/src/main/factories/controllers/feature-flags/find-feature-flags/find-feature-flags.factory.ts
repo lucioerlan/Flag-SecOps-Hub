@@ -1,6 +1,6 @@
 import { makeLogControllerDecorator } from '@/main/factories/decorators'
-import { makeFindFeatureFlagUsecase } from '@/main/factories/usecases/find-feature-flags/find-feature-flags.factory'
-import { FindFeatureFlagController } from '@/presentation/controllers/find-feature-flags/find-feature-flags.controller'
+import { makeFindFeatureFlagUsecase } from '@/main/factories/usecases/feature-flags'
+import { FindFeatureFlagController } from '@/presentation/controllers/feature-flags'
 import { Controller } from '@/presentation/protocols'
 
 export const makeFindFeatureFlagController = (): Controller => {

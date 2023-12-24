@@ -1,6 +1,6 @@
 import { makeLogControllerDecorator } from '@/main/factories/decorators'
-import { makeUpdateFeatureFlagUsecase } from '@/main/factories/usecases/update-feature-flags/update-feature-flags.factory'
-import { UpdateFeatureFlagController } from '@/presentation/controllers/update-feature-flags/update-feature-flags.controller'
+import { makeUpdateFeatureFlagUsecase } from '@/main/factories/usecases/feature-flags'
+import { UpdateFeatureFlagController } from '@/presentation/controllers/feature-flags'
 import { Controller } from '@/presentation/protocols'
 
 export const makeUpdateFeatureFlagController = (): Controller => {

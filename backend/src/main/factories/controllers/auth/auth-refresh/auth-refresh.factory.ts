@@ -1,6 +1,6 @@
 import { makeLogControllerDecorator } from '@/main/factories/decorators'
-import { makeAuthRefreshUsecase } from '@/main/factories/usecases/auth-refresh/auth-refresh.factory'
-import { AuthRefreshController } from '@/presentation/controllers/auth-refresh/auth-refresh.controller'
+import { makeAuthRefreshUsecase } from '@/main/factories/usecases/auth'
+import { AuthRefreshController } from '@/presentation/controllers/auth'
 import { Controller } from '@/presentation/protocols'
 
 export const makeAuthRefreshController = (): Controller => {
