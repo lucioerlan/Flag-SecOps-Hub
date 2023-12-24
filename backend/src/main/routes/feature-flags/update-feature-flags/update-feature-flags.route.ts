@@ -1,4 +1,4 @@
-import { makeUpdateFeatureFlagController } from '@/main/factories/controllers/update-feature-flags/update-feature-flags.factory'
+import { makeUpdateFeatureFlagController } from '@/main/factories/controllers/feature-flags'
 import { HttpResponse, Request } from '@/presentation/protocols'
 
 export const UpdateFeatureFlagsHandler = async (request: Request): Promise<HttpResponse> => {
