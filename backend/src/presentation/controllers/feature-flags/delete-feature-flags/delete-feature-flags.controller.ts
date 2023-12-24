@@ -1,5 +1,6 @@
-import { IDeleteFeatureFlag } from '@/domain/usecases/delete-feature-flags/delete-feature-flags'
-import { ok, serverError } from '@/presentation/helpers'
+import { MESSAGES } from '@/domain/entities'
+import { IDeleteFeatureFlag } from '@/domain/usecases/feature-flags'
+import { notFound, ok, serverError } from '@/presentation/helpers'
 import { Controller, HttpResponse, Request } from '@/presentation/protocols'
 
 export class DeleteFeatureFlagController implements Controller {
@@ -8,9 +9,10 @@ export class DeleteFeatureFlagController implements Controller {
   public async handle(request: Request): Promise<HttpResponse> {
     try {
       const { id } = request.params as IDeleteFeatureFlag.Params
+      const result = await this.deleteFeatureFlagUsecase.deleteFeatureFlag(id)
 
-      const deletedFeatureFlag = await this.deleteFeatureFlagUsecase.deleteFeatureFlag(id)
-      return ok(deletedFeatureFlag)
+      if (result === MESSAGES.featureFlagNotFound(id)) return notFound(result)
+      return ok(result)
     } catch (error) {
       return serverError(error)
     }

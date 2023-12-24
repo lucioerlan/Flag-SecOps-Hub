@@ -1,4 +1,4 @@
-import { ICreateFeatureFlag } from '@/domain/usecases/create-feature-flags/create-feature-flags'
+import { ICreateFeatureFlag } from '@/domain/usecases/feature-flags'
 import { ok, serverError } from '@/presentation/helpers'
 import { Controller, HttpResponse, Request } from '@/presentation/protocols'
 
@@ -10,8 +10,8 @@ export class CreateFeatureFlagController implements Controller {
       const { name, description, state } = request.body as ICreateFeatureFlag.Params
       const data = { name, description, state }
 
-      const createdFeatureFlag = await this.createFeatureFlagUsecase.createFeatureFlag(data)
-      return ok(createdFeatureFlag)
+      const result = await this.createFeatureFlagUsecase.createFeatureFlag(data)
+      return ok(result)
     } catch (error) {
       return serverError(error)
     }
