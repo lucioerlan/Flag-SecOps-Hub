@@ -1,6 +1,5 @@
+import env from '@/main/config/env'
 import { Logger as WinstonLogger, createLogger, transports, format } from 'winston'
-
-const logLevel = process.env.NEW_RELIC_LOG_LEVEL || 'info'
 
 export interface ILogger {
   log(message: string, level?: string): void
@@ -42,7 +41,7 @@ export class WinstonLoggerAdapter implements ILogger {
 }
 
 export const createLoggerInstance: WinstonLogger = createLogger({
-  level: logLevel,
+  level: env.logLevel,
   transports: [new transports.Console()],
   format: format.combine(
     format.json(),
