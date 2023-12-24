@@ -18,8 +18,13 @@ services:
       - ./backend:/app
     environment:
       NODE_ENV: production
+      LOG_LEVEL: debug
       PORT: 5000
       MONGO_URL: mongodb://db:27017/flag-secops-hub
+      DB_NAME: flag-secops-hub
+      CORS_ORIGIN: http://localhost:3000
+      JWT_SECRET: er123lan_gbtech$%&*()_+
+      COOKIE_SECRET: lu123cio_gbtech$%&*()_+
     restart: on-failure
     depends_on:
       - database

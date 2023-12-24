@@ -1,9 +1,18 @@
+import {
+  setupCompress,
+  setupCookie,
+  setupCors,
+  setupCsrf,
+  setupHelmet,
+  setupRateLimit,
+  setupSession
+} from '@/main/middlewares'
 import { Routes } from '@/presentation/protocols'
-import fastifyCompress from '@fastify/compress'
-import fastifyCors from '@fastify/cors'
-import fastifyHelmet from '@fastify/helmet'
-import fastifyRateLimit from '@fastify/rate-limit'
+import Swagger, { SwaggerOptions } from '@fastify/swagger'
+import SwaggerUi from '@fastify/swagger-ui'
 import fastify, { FastifyInstance } from 'fastify'
+
+import swaggerConfig from '../docs/swagger'
 
 export interface IFastifyAdapter {
   start(): Promise<void>
@@ -24,22 +33,41 @@ export class FastifyAdapter implements IFastifyAdapter {
     this.port = port
     this.registerMiddleware()
     this.registerRoutes(routes)
+    this.registerSwagger()
   }
 
   private registerMiddleware() {
-    this.app.register(fastifyHelmet)
-    this.app.register(fastifyCompress)
-    this.app.register(fastifyRateLimit, { max: 100, timeWindow: '1 minute' })
-    this.app.register(fastifyCors, {
-      origin: process.env.CORS_ORIGIN,
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-    })
+    // Security headers
+    setupHelmet(this.app)
+
+    // Rate limiting
+    setupRateLimit(this.app)
+
+    // CORS
+    setupCors(this.app)
+
+    // Cookies
+    setupCookie(this.app)
+
+    // Session Management
+    setupSession(this.app)
+
+    // Compression
+    setupCompress(this.app)
+
+    // CSRF Protection
+    setupCsrf(this.app)
   }
 
   private registerRoutes(routes: Routes[]) {
     routes.forEach((route) => {
       this.app.route(route)
     })
+  }
+
+  private registerSwagger() {
+    this.app.register(Swagger, swaggerConfig as SwaggerOptions)
+    this.app.register(SwaggerUi)
   }
 
   public async start(): Promise<void> {

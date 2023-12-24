@@ -3,7 +3,7 @@ module.exports = {
   bail: true,
   testEnvironment: 'jest-environment-node',
   verbose: true,
-  setupFiles: ['./test/setup.js'],
+  setupFiles: ['./tests/setup.js'],
   testPathIgnorePatterns: ['/node_modules/'],
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {

@@ -65,7 +65,6 @@
     ".eslintrc.js",
     "commitlint.config.js",
     "jest.config.ts",
-    "newrelic.js",
     ".lintstagedrc"
   ],
   "settings": {
