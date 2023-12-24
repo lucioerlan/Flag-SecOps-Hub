@@ -1,4 +1,4 @@
-import { makeAuthLoginController } from '@/main/factories/controllers/auth-login/auth-login.factory'
+import { makeAuthLoginController } from '@/main/factories/controllers/auth'
 import { HttpResponse, Request } from '@/presentation/protocols'
 
 export const AuthLoginHandler = async (request: Request): Promise<HttpResponse> => {
