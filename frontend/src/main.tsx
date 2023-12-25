@@ -1,11 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { SettingsProvider } from '@/contexts/SettingsContext'
+import { restoreSettings } from '@/utils/settings'
+import { createRoot } from 'react-dom/client'
+import { QueryClientProvider } from 'react-query'
+import { BrowserRouter } from 'react-router-dom'
+
 import App from './App'
+import { queryClient } from './factories/queryClient'
+import './translate' // i18n
 
-const Strict = () => (
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const settings = restoreSettings()
+const container = document.getElementById('root')
+const root = createRoot(container as Element)
+
+root.render(
+  <BrowserRouter>
+    <SettingsProvider settings={settings}>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </SettingsProvider>
+  </BrowserRouter>
 )
-
-ReactDOM.render(<Strict />, document.getElementById('root'))
