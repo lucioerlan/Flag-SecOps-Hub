@@ -1,5 +1,11 @@
 {
   "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "node": true
+  },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -8,19 +14,7 @@
     "plugin:prettier/recommended",
     "plugin:cypress/recommended"
   ],
-  "plugins": ["react", "@typescript-eslint", "prettier"],
-  "env": {
-    "browser": true,
-    "jasmine": true,
-    "jest": true,
-    "node": true
-  },
-  "settings": {
-    "react": {
-      "pragma": "React",
-      "version": "detect"
-    }
-  },
+  "plugins": ["react", "@typescript-eslint", "prettier", "eslint-plugin-import-helpers"],
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
@@ -31,15 +25,25 @@
     }
   ],
   "rules": {
+    "space-before-function-parent": 0,
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ],
+    "no-console": "error",
     "prettier/prettier": [
       "error",
-      {},
       {
-        "usePrettierrc": true
+        "endOfLine": "auto"
       }
     ],
     "no-alert": "error",
-    "no-console": "error",
     "no-unused-vars": "warn",
     "import/no-unresolved": "off",
     "react/react-in-jsx-scope": "off",
@@ -48,5 +52,11 @@
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
     "jest/expect-expect": "off"
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
   }
 }
