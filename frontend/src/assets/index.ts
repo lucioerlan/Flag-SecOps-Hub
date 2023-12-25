@@ -1,0 +1,5 @@
+export { default as EyeOff } from './icons/eye_off_login.png'
+export { default as EyeOn } from './icons/eye_visible_login.png'
+export { default as FlagSecopsHubLogo } from './logos/FlagSecopsHub.svg'
+export { default as Mail } from './icons/mail_login.png'
+export { default as Pass } from './icons/pass_login.png'
