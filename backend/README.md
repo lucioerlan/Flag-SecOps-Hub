@@ -45,6 +45,23 @@
 
 ---
 
+## 📄 Documentações
+
+**Gerando um Servidor de Documentação com Swagger**
+Para visualizar a documentação Swagger:
+
+- Inicie o projeto com `npm run dev` para levantar o servidor localmente.
+- Acesse `http://localhost:5000/documentation` no navegador para ver a interface do Swagger com todas as rotas disponíveis.
+
+**Gerando um Servidor de Documentação com Docsify**
+Para visualizar a documentação no Docsify:
+
+- Se ainda não inicializou a documentação, execute `npm run docs:init` para preparar a pasta `docs`.
+- Em seguida, execute `npm run docs:serve` para levantar um servidor local na porta `7000`.
+- Acesse `http://localhost:7000` no navegador, você deverá ver uma interface amigável para navegar entre os documentos README.md do projeto.
+
+---
+
 ## 🎯 Comandos
 
 Os comandos abaixo serão executados no nível monorepo - em todos os aplicativos e pacotes onde existe o script npm.
@@ -52,10 +69,12 @@ Os comandos abaixo serão executados no nível monorepo - em todos os aplicativo
 | Comando             | Descrição                                    |
 | ------------------- | -------------------------------------------- |
 | build               | Gera a versão de produção do projeto         |
-| dev                 | Inicializa o projeto                         |
+| dev                 | Inicializa o projeto em modo desenvolvimento |
+| start               | Inicializa o projeto em modo produção        |
 | lint                | Aplica lint em todo o projeto                |
+| format              | Aplica prettier em todo o projeto            |
 | test                | Executa todos os testes do projeto           |
-| clean               | Remove a pasta node_modules,coverage e build |
+| clean               | Remove a pasta node_modules,coverage e dist  |
 | release             | Gera uma nova versão do projeto              |
 | update-dependencies | Atualiza as dependências do projeto          |
 | docs:init           | Inicializa a documentação                    |
