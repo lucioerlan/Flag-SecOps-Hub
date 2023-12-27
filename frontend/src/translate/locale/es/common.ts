@@ -6,7 +6,8 @@ const translations = {
     delete: 'Borrar',
     cancel: 'Cancelar',
     create: 'Crear',
-    register: 'Registrar'
+    register: 'Registrar',
+    edit: 'Editar'
   },
   chip: {
     back: 'Volver'

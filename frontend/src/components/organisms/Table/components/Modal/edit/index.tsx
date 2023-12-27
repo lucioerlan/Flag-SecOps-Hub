@@ -84,7 +84,7 @@ const FeatureFlagEdit: React.FC<FeatureFlagEditProps> = ({ onClose, flag }: Feat
               disabled={
                 isSubmitting || !!(errors.name && touched.name) || !!(errors.description && touched.description)
               }
-              label={isSubmitting ? t('button.isSubmitting') : t('button.create')}
+              label={isSubmitting ? t('button.isSubmitting') : t('button.edit')}
             />
           </ButtonContainer>
         </Form>
