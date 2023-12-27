@@ -68,6 +68,6 @@ export const FormWrapper = styled(Form)`
     color: #fff;
     float: left;
     margin-top: 20px;
-    font-family: Roboto, sans-serif;
+    font-family: 'Sen', 'Roboto', sans-serif;
   }
 `

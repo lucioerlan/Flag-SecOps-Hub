@@ -7,7 +7,7 @@ describe('settings', () => {
 
   it('restoreSettings should return the stored settings', () => {
     const storedSettings = {
-      token: '',
+      accessToken: '',
       isLoggedIn: ''
     }
 
@@ -18,7 +18,7 @@ describe('settings', () => {
 
   it('storeSettings  should save the settings to localStorage', () => {
     const settingsToStore = {
-      token: '',
+      accessToken: '',
       isLoggedIn: ''
     }
 

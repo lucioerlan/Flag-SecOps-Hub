@@ -9,9 +9,9 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   const settings = restoreSettings()
 
-  if (settings && settings.token) {
+  if (settings && settings.accessToken) {
     config.headers = {
-      Authorization: `Bearer ${settings.token}`
+      Authorization: `Bearer ${settings.accessToken}`
     } as AxiosRequestHeaders
   }
 
@@ -21,19 +21,22 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response.status === 401) {
+    const { status, data, config } = error.response
+
+    if (status === 401 && data.error === 'Token expired' && !config._retry) {
+      config._retry = true
       const settings = await restoreSettings()
-      const data = await refreshToken({ access_token: settings.token })
 
-      if (data) {
-        const newSettings = {
-          token: data.token,
-          email: settings.email,
-          isLoggedIn: true
+      try {
+        const newAccessToken = await refreshToken(settings.refreshToken)
+
+        if (newAccessToken) {
+          storeSettings({ ...settings, accessToken: newAccessToken })
+          config.headers.Authorization = `Bearer ${newAccessToken}`
+          return api(config)
         }
-
-        storeSettings(newSettings)
-        window.location.reload()
+      } catch (refreshError) {
+        return Promise.reject(refreshError)
       }
     }
 

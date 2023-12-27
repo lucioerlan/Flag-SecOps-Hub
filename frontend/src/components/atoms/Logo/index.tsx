@@ -1,6 +1,6 @@
 import { LogoWrapper } from './styled'
 
-export type LogoProps = {
+type LogoProps = {
   src: string
   alt: string
   'data-testid'?: string

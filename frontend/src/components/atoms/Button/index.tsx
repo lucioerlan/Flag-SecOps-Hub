@@ -1,12 +1,11 @@
 import { ButtonWrapper } from './styled'
 
-export type ButtonProps = {
+type ButtonProps = {
   color?: string
   disabled?: boolean
   label: string
   type: 'button' | 'submit' | 'reset'
   hover?: string
-  Submitting?: boolean
   onClick?: () => void
   'data-testid'?: string
 }
