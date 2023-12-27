@@ -5,25 +5,19 @@ import 'react-toastify/dist/ReactToastify.css'
 export const StyledToastContainer = styled(ToastContainer)`
   cursor: pointer;
   z-index: 100;
+
   .Toastify__toast {
     font-size: 16px;
-    font-weight: 700;
+    font-family: 'Sen', 'Roboto', sans-serif;
     text-align: center;
-    border-radius: 0;
+    border-radius: 12px;
+    background: rgb(34, 33, 48);
+    border: none;
+    border: 1px solid #fff;
+    color: #fff;
   }
-  .Toastify__toast--error {
-    background: #dc3545;
-    color: white;
-  }
-  .Toastify__toast--warning {
-    background: yellow;
-    color: black;
-  }
-  .Toastify__toast--success {
-    background: #008b00;
-  }
-  .Toastify__toast-body {
-  }
-  .Toastify__progress-bar {
+
+  .Toastify__close-button {
+    color: #fff;
   }
 `
