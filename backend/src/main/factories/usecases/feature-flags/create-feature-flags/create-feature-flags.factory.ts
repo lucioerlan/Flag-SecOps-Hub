@@ -1,5 +1,5 @@
-import { CreateFeatureFlagUsecase } from '@/data/usecases/feature-flags/create-feature-flags/create-feature-flags.usecase'
-import { CreateFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags/create-feature-flags/create-feature-flags.repository'
+import { CreateFeatureFlagUsecase } from '@/data/usecases/feature-flags'
+import { CreateFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags'
 
 export const makeCreateFeatureFlagUsecase = (): CreateFeatureFlagUsecase => {
   const createFeatureFlagRepository = new CreateFeatureFlagRepository()
