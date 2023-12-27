@@ -1,38 +1,41 @@
 import { Tab, Toast } from '@/components'
-import FormContainer from '@/constants/form-container'
+import useLoginFormInitialValues from '@/constants/form-auth-login'
+import { useI18n } from '@/hooks/useI18n'
 import useSettings from '@/hooks/useSettings'
-import { authUser } from '@/services/auth'
-import { AuthUser } from '@/types/auth'
+import { authLogin } from '@/services/auth'
+import { RequestAuthLogin } from '@/types/auth'
 import { LoginSchema } from '@/validators/schemas'
 import { Formik } from 'formik'
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { LoginForm } from './components/LoginForm'
 
 const Login = () => {
-  const { t } = useTranslation()
+  const t = useI18n()
   const navigate = useNavigate()
   const { setSettings } = useSettings()
 
-  const tryToLogin = async (values: AuthUser) => {
-    const { body } = await authUser({
+  const tryToLogin = async (values: RequestAuthLogin) => {
+    const response = await authLogin({
       email: values.email,
       password: values.password
     })
 
     try {
-      if (body && body.accessToken) {
-        setSettings({
-          token: body.accessToken,
-          email: body.email,
-          isLoggedIn: true
-        })
+      if (response.body && response.body.accessToken) {
+        toast.success(`${t('success.welcomeBack')} ${values.email}! ${t('success.wemissyou')} ❤️`)
 
-        navigate('/app/dashboard')
+        setTimeout(() => {
+          setSettings({
+            accessToken: response.body.accessToken,
+            isLoggedIn: true
+          })
+          navigate('/home')
+        }, 1500)
       } else {
-        toast.warning(t('warning.credentials'))
+        const messageKey = response.response.data.body.message
+        toast.warning(t(`warning.${messageKey}`))
       }
     } catch (error) {
       toast.error(t('error.login'))
@@ -42,7 +45,7 @@ const Login = () => {
   return (
     <Tab title={t('tabs.login')} data-testid="login">
       <Formik
-        initialValues={FormContainer.INITIAL_VALUES.FormLogin}
+        initialValues={useLoginFormInitialValues()}
         onSubmit={tryToLogin}
         validationSchema={LoginSchema()}
         component={LoginForm}
