@@ -7,7 +7,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('Chip component', () => {
   beforeEach(() => {
-    render(<Chip link="/app/dashboard" label="Back" data-testid="chip" />)
+    render(<Chip link="/home" label="Back" data-testid="chip" />)
   })
 
   it('should render Chip label', () => {
