@@ -1,5 +1,5 @@
 import { MongoHelper } from '@/infra/database/mongodb/helper/mongodb.helper'
-import { UpdateFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags/update-feature-flags/update-feature-flags.repository'
+import { UpdateFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags'
 
 jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
   MongoHelper: {
@@ -10,14 +10,14 @@ jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
 }))
 
 const mockFeatureFlag = {
-  name: 'any_name',
-  description: 'any_description',
+  name: 'param_name',
+  description: 'param_description',
   state: true
 }
 
 const updatedFeatureFlag = {
   ...mockFeatureFlag,
-  _id: 'any_id',
+  _id: 'param_id',
   name: 'updated_name'
 }
 
@@ -38,14 +38,14 @@ describe('UpdateFeatureFlagRepository', () => {
   describe('updateFeatureFlag', () => {
     it('successfully updates a feature flag and returns the updated document', async () => {
       const { sut } = sutFactory()
-      const result = await sut.updateFeatureFlag({ id: 'any_id', ...mockFeatureFlag })
+      const result = await sut.updateFeatureFlag({ id: 'param_id', ...mockFeatureFlag })
       expect(result).toEqual(MongoHelper.map({ value: updatedFeatureFlag }))
     })
 
     it('handles errors thrown during the update of a feature flag', async () => {
       const { sut } = sutFactory()
       mockCollection.findOneAndUpdate.mockRejectedValueOnce(new Error('DB error'))
-      await expect(sut.updateFeatureFlag({ id: 'any_id', ...mockFeatureFlag })).rejects.toThrow('DB error')
+      await expect(sut.updateFeatureFlag({ id: 'param_id', ...mockFeatureFlag })).rejects.toThrow('DB error')
     })
   })
 })

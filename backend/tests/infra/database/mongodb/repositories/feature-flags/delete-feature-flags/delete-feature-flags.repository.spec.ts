@@ -1,5 +1,5 @@
 import { MongoHelper } from '@/infra/database/mongodb/helper/mongodb.helper'
-import { DeleteFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags/delete-feature-flags/delete-feature-flags.repository'
+import { DeleteFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags'
 
 jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
   MongoHelper: {
@@ -25,7 +25,7 @@ describe('DeleteFeatureFlagRepository', () => {
   describe('deleteFeatureFlag', () => {
     it('successfully deletes a feature flag and returns the deleted count', async () => {
       const { sut } = sutFactory()
-      const deletedCount = await sut.deleteFeatureFlag('any_id')
+      const deletedCount = await sut.deleteFeatureFlag('param_id')
       expect(deletedCount).toBe(1)
     })
 
@@ -39,7 +39,7 @@ describe('DeleteFeatureFlagRepository', () => {
     it('handles errors thrown during the deletion of a feature flag', async () => {
       const { sut } = sutFactory()
       mockCollection.deleteOne.mockRejectedValueOnce(new Error('DB error'))
-      await expect(sut.deleteFeatureFlag('any_id')).rejects.toThrow('DB error')
+      await expect(sut.deleteFeatureFlag('param_id')).rejects.toThrow('DB error')
     })
   })
 })

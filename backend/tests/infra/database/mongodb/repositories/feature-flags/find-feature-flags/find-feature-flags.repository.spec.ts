@@ -1,5 +1,5 @@
 import { MongoHelper } from '@/infra/database/mongodb/helper/mongodb.helper'
-import { FindFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags/find-feature-flags/find-feature-flags.repository'
+import { FindFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags'
 
 jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
   MongoHelper: {
@@ -10,9 +10,9 @@ jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
 }))
 
 const mockFeatureFlag = {
-  _id: 'any_id',
-  name: 'any_name',
-  description: 'any_description',
+  _id: 'param_id',
+  name: 'param_name',
+  description: 'param_description',
   state: true,
   created_at: new Date(),
   updated_at: new Date()
@@ -35,7 +35,7 @@ describe('FindFeatureFlagRepository', () => {
   describe('findFeatureFlag', () => {
     it('successfully retrieves a feature flag and returns mapped data', async () => {
       const { sut } = sutFactory()
-      const featureFlag = await sut.findFeatureFlag('any_id')
+      const featureFlag = await sut.findFeatureFlag('param_id')
       expect(featureFlag).toEqual(MongoHelper.map(mockFeatureFlag))
     })
 
@@ -49,7 +49,7 @@ describe('FindFeatureFlagRepository', () => {
     it('handles errors thrown during the retrieval of a feature flag', async () => {
       const { sut } = sutFactory()
       mockCollection.findOne.mockRejectedValueOnce(new Error('DB error'))
-      await expect(sut.findFeatureFlag('any_id')).rejects.toThrow('DB error')
+      await expect(sut.findFeatureFlag('param_id')).rejects.toThrow('DB error')
     })
   })
 })

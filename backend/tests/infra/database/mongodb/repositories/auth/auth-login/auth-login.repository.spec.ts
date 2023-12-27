@@ -1,5 +1,5 @@
 import { MongoHelper } from '@/infra/database/mongodb/helper/mongodb.helper'
-import { AuthLoginRepository } from '@/infra/database/mongodb/repositories/auth/auth-login/auth-login.repository'
+import { AuthLoginRepository } from '@/infra/database/mongodb/repositories/auth'
 
 jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
   MongoHelper: {
@@ -9,7 +9,7 @@ jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
 }))
 
 const mockUser = {
-  _id: 'any_id',
+  _id: 'param_id',
   name: 'user',
   email: 'user@mail.com',
   password: 'hashed_password'

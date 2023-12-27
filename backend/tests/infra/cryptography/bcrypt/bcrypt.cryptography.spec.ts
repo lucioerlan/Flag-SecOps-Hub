@@ -17,7 +17,7 @@ describe('BcryptCryptography', () => {
     it('should call hash with correct values', async () => {
       const { sut } = sutFactory()
       const hashSpy = jest.spyOn(bcrypt, 'hash')
-      const plaintext = 'any_value'
+      const plaintext = 'param_value'
       await sut.hash(plaintext)
 
       expect(hashSpy).toHaveBeenCalledWith(plaintext, salt)
@@ -26,7 +26,7 @@ describe('BcryptCryptography', () => {
     it('should return a valid hash on hash success', async () => {
       const { sut } = sutFactory()
       jest.spyOn(bcrypt, 'hash').mockImplementationOnce(() => 'hash')
-      const hash = await sut.hash('any_value')
+      const hash = await sut.hash('param_value')
 
       expect(hash).toBe('hash')
     })
@@ -36,7 +36,7 @@ describe('BcryptCryptography', () => {
       jest.spyOn(bcrypt, 'hash').mockImplementationOnce(() => {
         throw new Error()
       })
-      const promise = sut.hash('any_value')
+      const promise = sut.hash('param_value')
 
       await expect(promise).rejects.toThrow()
     })
@@ -46,15 +46,15 @@ describe('BcryptCryptography', () => {
     it('should call compare with correct values', async () => {
       const { sut } = sutFactory()
       const compareSpy = jest.spyOn(bcrypt, 'compare')
-      await sut.compare('any_value', 'any_hash')
+      await sut.compare('param_value', 'param_hash')
 
-      expect(compareSpy).toHaveBeenCalledWith('any_value', 'any_hash')
+      expect(compareSpy).toHaveBeenCalledWith('param_value', 'param_hash')
     })
 
     it('should return true when comparison succeeds', async () => {
       const { sut } = sutFactory()
       jest.spyOn(bcrypt, 'compare').mockImplementationOnce(() => true)
-      const isValid = await sut.compare('any_value', 'any_hash')
+      const isValid = await sut.compare('param_value', 'param_hash')
 
       expect(isValid).toBe(true)
     })
@@ -62,7 +62,7 @@ describe('BcryptCryptography', () => {
     it('should return false when comparison fails', async () => {
       const { sut } = sutFactory()
       jest.spyOn(bcrypt, 'compare').mockImplementationOnce(() => false)
-      const isValid = await sut.compare('any_value', 'any_hash')
+      const isValid = await sut.compare('param_value', 'param_hash')
 
       expect(isValid).toBe(false)
     })
@@ -72,7 +72,7 @@ describe('BcryptCryptography', () => {
       jest.spyOn(bcrypt, 'compare').mockImplementationOnce(() => {
         throw new Error()
       })
-      const promise = sut.compare('any_value', 'any_hash')
+      const promise = sut.compare('param_value', 'param_hash')
 
       await expect(promise).rejects.toThrow()
     })
