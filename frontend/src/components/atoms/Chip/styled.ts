@@ -16,7 +16,7 @@ export const ChipWrapper = styled.button`
   border-radius: 6px;
   border: none;
   box-shadow: 0px 2px 3px rgba(51, 51, 51, 0.2);
-  font-family: sans-serif;
+  font-family: 'Sen', 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
