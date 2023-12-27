@@ -1,11 +1,11 @@
 import Header from '@/layouts/Header'
 import { Outlet } from 'react-router-dom'
 
-const DashboardLayout = () => (
+const HomeLayout = () => (
   <>
     <Outlet />
     <Header />
   </>
 )
 
-export default DashboardLayout
+export default HomeLayout
