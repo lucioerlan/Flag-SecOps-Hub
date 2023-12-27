@@ -1,18 +1,18 @@
 import styled from 'styled-components'
 
 export const LogoWrapper = styled.img`
-  width: 25%;
+  width: 20%;
   margin: 0 0 20px 0;
   @media (max-width: 568px) {
-    width: 40%;
+    width: 30%;
   }
   @media (max-width: 1268px) {
-    width: 45%;
+    width: 35%;
   }
   @media (max-width: 1368px) {
-    width: 50%;
+    width: 30%;
   }
   @media (max-width: 1658px) {
-    width: 55%;
+    width: 35%;
   }
 `

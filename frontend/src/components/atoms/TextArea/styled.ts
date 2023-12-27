@@ -1,9 +1,10 @@
 import { Field } from 'formik'
 import styled from 'styled-components'
 
-export const InputField = styled(Field)`
+export const TextAreaField = styled(Field).attrs({ as: 'textarea' })`
   width: 88%;
   padding: 15px 0 15px 42px;
+  min-height: 120px;
   border: 1px solid ${(props) => (props.color ? props.color : '#24292F')};
   border-radius: 12px;
   outline: 0;

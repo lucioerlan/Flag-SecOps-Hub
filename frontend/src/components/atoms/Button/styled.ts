@@ -12,7 +12,7 @@ export const ButtonWrapper = styled.button`
   background: rgba(255, 255, 255, 0);
   outline: 0;
   cursor: pointer;
-  font-family: Roboto, sans-serif;
+  font-family: 'Sen', 'Roboto', sans-serif;
   margin: 45px auto 31px;
   transition: 0.5s all;
   -webkit-transition: 0.5s all;
