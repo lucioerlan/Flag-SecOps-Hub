@@ -1,7 +1,7 @@
 import api from '@/factories/api'
-import { AuthUser } from '@/types/auth'
+import { RequestAuthLogin, RequestAuthRegister, RequestAuthRefreshToken } from '@/types/auth'
 
-const authUser = async ({ email, password }: AuthUser) => {
+const authLogin = async ({ email, password }: RequestAuthLogin) => {
   try {
     const { data } = await api.post('auth/login', { email, password })
 
@@ -11,14 +11,22 @@ const authUser = async ({ email, password }: AuthUser) => {
   }
 }
 
-const refreshToken = async ({ access_token }: { access_token: string }) => {
+const authRegister = async ({ name, email, password }: RequestAuthRegister) => {
   try {
-    const { data } = await api.post('users/auth/refresh', { access_token })
-
+    const { data } = await api.post('auth/register', { name, email, password })
     return data
   } catch (error) {
     return error
   }
 }
 
-export { authUser, refreshToken }
+const refreshToken = async ({ accessToken }: RequestAuthRefreshToken) => {
+  try {
+    const { data } = await api.post('auth/refresh', { accessToken })
+    return data
+  } catch (error) {
+    return error
+  }
+}
+
+export { authLogin, authRegister, refreshToken }
