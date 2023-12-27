@@ -1,5 +1,5 @@
 import { MongoHelper } from '@/infra/database/mongodb/helper/mongodb.helper'
-import { CreateFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags/create-feature-flags/create-feature-flags.repository'
+import { CreateFeatureFlagRepository } from '@/infra/database/mongodb/repositories/feature-flags'
 
 jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
   MongoHelper: {
@@ -9,13 +9,13 @@ jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
 }))
 
 const mockFeatureFlag = {
-  name: 'any_name',
-  description: 'any_description',
+  name: 'param_name',
+  description: 'param_description',
   state: true
 }
 
 const mockCollection = {
-  insertOne: jest.fn().mockResolvedValue({ insertedId: 'any_id' })
+  insertOne: jest.fn().mockResolvedValue({ insertedId: 'param_id' })
 }
 
 const sutFactory = (): { sut: CreateFeatureFlagRepository } => {
@@ -40,7 +40,7 @@ describe('CreateFeatureFlagRepository', () => {
     it('successfully creates a feature flag and returns its id', async () => {
       const { sut } = sutFactory()
       const featureFlagId = await sut.createFeatureFlag(mockFeatureFlag)
-      expect(featureFlagId).toBe('any_id')
+      expect(featureFlagId).toBe('param_id')
     })
 
     it('properly assigns timestamps on feature flag creation', async () => {

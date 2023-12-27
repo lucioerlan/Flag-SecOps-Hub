@@ -1,5 +1,5 @@
 import { MongoHelper } from '@/infra/database/mongodb/helper/mongodb.helper'
-import { AuthRegisterRepository } from '@/infra/database/mongodb/repositories/auth/auth-register/auth-register.repository'
+import { AuthRegisterRepository } from '@/infra/database/mongodb/repositories/auth'
 
 jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
   MongoHelper: {
@@ -9,14 +9,14 @@ jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
 }))
 
 const mockUser = {
-  _id: 'any_id',
+  _id: 'param_id',
   name: 'user',
   email: 'new_user@mail.com',
   password: 'hashed_password'
 }
 
 const mockCollection = {
-  insertOne: jest.fn().mockResolvedValue({ insertedId: 'any_id' }),
+  insertOne: jest.fn().mockResolvedValue({ insertedId: 'param_id' }),
   findOne: jest.fn().mockResolvedValue(mockUser)
 }
 
@@ -34,7 +34,7 @@ describe('AuthRegisterRepository', () => {
     it('returns a unique identifier when a new user is added successfully', async () => {
       const { sut } = sutFactory()
       const userId = await sut.addUser(mockUser)
-      expect(userId).toBe('any_id')
+      expect(userId).toBe('param_id')
     })
 
     it('handles incomplete user data gracefully', async () => {

@@ -1,7 +1,7 @@
-import { AuthLoginUsecase } from '@/data/usecases/auth/auth-login/auth-login.usecase'
+import { AuthLoginUsecase } from '@/data/usecases/auth'
 import { BcryptCryptography } from '@/infra/cryptography/bcrypt/bcrypt.cryptography'
 import { JwtCryptography } from '@/infra/cryptography/jwt/jwt.cryptography'
-import { AuthLoginRepository } from '@/infra/database/mongodb/repositories/auth/auth-login/auth-login.repository'
+import { AuthLoginRepository } from '@/infra/database/mongodb/repositories/auth'
 import env from '@/main/config/env'
 
 export const makeAuthLoginUsecase = (): AuthLoginUsecase => {

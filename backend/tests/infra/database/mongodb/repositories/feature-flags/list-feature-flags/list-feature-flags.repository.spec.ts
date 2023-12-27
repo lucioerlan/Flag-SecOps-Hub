@@ -1,5 +1,5 @@
 import { MongoHelper } from '@/infra/database/mongodb/helper/mongodb.helper'
-import { ListFeatureFlagsRepository } from '@/infra/database/mongodb/repositories/feature-flags/list-feature-flags/list-feature-flags.repository'
+import { ListFeatureFlagsRepository } from '@/infra/database/mongodb/repositories/feature-flags'
 
 jest.mock('@/infra/database/mongodb/helper/mongodb.helper', () => ({
   MongoHelper: {
