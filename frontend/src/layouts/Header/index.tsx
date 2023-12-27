@@ -1,33 +1,37 @@
+import { useI18n } from '@/hooks/useI18n'
 import useSettings from '@/hooks/useSettings'
 import { useNavigate } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
-import { LogoutContainer, BackContainer } from './styled'
+import { ExitButton, InnerDiv, Logo, NavInnerDiv, StyledExitButton, StyledHeader, StyledNav, Tooltip } from './styled'
 
 const Header = () => {
+  const t = useI18n()
   const { setSettings } = useSettings()
   const navigate = useNavigate()
-  const { pathname } = useLocation()
-
-  const handleBack = () => {
-    navigate('/app/dashboard')
-  }
 
   const handleLogout = () => {
     setSettings({
-      token: '',
-      email: '',
+      accessToken: '',
       isLoggedIn: false
     })
     navigate('/login')
   }
 
   return (
-    <>
-      <LogoutContainer onClick={handleLogout}></LogoutContainer>
-
-      {pathname !== '/app/dashboard' && <BackContainer onClick={handleBack} />}
-    </>
+    <StyledHeader>
+      <InnerDiv>
+        <Logo />
+        <StyledNav aria-label="Header navigation">
+          <NavInnerDiv>
+            <Tooltip title={t('tooltip.logout')}>
+              <ExitButton aria-label={t('header.logout')} onClick={handleLogout}>
+                <StyledExitButton aria-hidden="true" />
+              </ExitButton>
+            </Tooltip>
+          </NavInnerDiv>
+        </StyledNav>
+      </InnerDiv>
+    </StyledHeader>
   )
 }
 
