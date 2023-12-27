@@ -3,8 +3,7 @@ import { createContext, useState, ReactNode } from 'react'
 
 const SettingsContext = createContext({
   settings: {
-    token: '',
-    email: '',
+    accessToken: '',
     isLoggedIn: false
   },
   setSettings: (settings: object) => {
@@ -13,8 +12,7 @@ const SettingsContext = createContext({
 })
 
 const defaultSettings = {
-  token: '',
-  email: '',
+  accessToken: '',
   isLoggedIn: false
 }
 
@@ -23,8 +21,7 @@ export function SettingsProvider({
   children
 }: {
   settings: {
-    token: string
-    email: string
+    accessToken: string
     isLoggedIn: boolean
   }
   children: ReactNode
@@ -33,7 +30,6 @@ export function SettingsProvider({
 
   const handleSaveSettings = (updatedSettings = {}) => {
     const mergedSettings = { ...currentSettings, ...updatedSettings }
-
     setCurrentSettings(mergedSettings)
     storeSettings(mergedSettings)
   }
@@ -51,5 +47,4 @@ export function SettingsProvider({
 }
 
 export const SettingsConsumer = SettingsContext.Consumer
-
 export default SettingsContext

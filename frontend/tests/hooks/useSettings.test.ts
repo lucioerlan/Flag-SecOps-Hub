@@ -7,7 +7,7 @@ jest.mock('react', () => {
     ...ActualReact,
     useContext: () => ({
       settings: {
-        token: '',
+        accessToken: '',
         isLoggedIn: ''
       }
     })

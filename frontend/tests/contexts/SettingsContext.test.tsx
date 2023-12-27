@@ -4,8 +4,7 @@ import { render } from '@testing-library/react'
 describe('SettingsContext', () => {
   it('Should render SettingsContext', () => {
     const settings = {
-      token: '',
-      email: '',
+      accessToken: '',
       isLoggedIn: false
     }
 
