@@ -14,11 +14,18 @@
     "plugin:prettier/recommended",
     "plugin:cypress/recommended"
   ],
-  "plugins": ["react", "@typescript-eslint", "prettier", "eslint-plugin-import-helpers"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "eslint-plugin-import-helpers"
+  ],
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
-      "files": ["**/*.stories.*"],
+      "files": [
+        "**/*.stories.*"
+      ],
       "rules": {
         "import/no-anonymous-default-export": "off"
       }
@@ -44,7 +51,6 @@
       }
     ],
     "no-alert": "error",
-    "no-unused-vars": "warn",
     "import/no-unresolved": "off",
     "react/react-in-jsx-scope": "off",
     "jest/no-disabled-tests": "warn",
