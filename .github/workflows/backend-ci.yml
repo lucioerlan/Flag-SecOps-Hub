@@ -1,0 +1,53 @@
+name: Backend Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - "feature/**"
+      - "fix/**"
+      - "release/**"
+    paths-ignore:
+      - "**/*.md"
+      - "**/*.yml"
+      - "**/*.yaml"
+      - .github/**
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "**/*.md"
+      - "**/*.yml"
+      - "**/*.yaml"
+      - .github/**
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Read .nvmrc
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Run Tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
