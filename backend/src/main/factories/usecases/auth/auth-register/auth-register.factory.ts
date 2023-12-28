@@ -1,6 +1,6 @@
-import { AuthRegisterUsecase } from '@/data/usecases/auth/auth-register/auth-register.usecase'
+import { AuthRegisterUsecase } from '@/data/usecases/auth'
 import { BcryptCryptography } from '@/infra/cryptography/bcrypt/bcrypt.cryptography'
-import { AuthRegisterRepository } from '@/infra/database/mongodb/repositories/auth/auth-register/auth-register.repository'
+import { AuthRegisterRepository } from '@/infra/database/mongodb/repositories/auth'
 
 export const makeAuthRegisterUsecase = (): AuthRegisterUsecase => {
   const salt = 12

@@ -16,8 +16,6 @@ const makeResponseMock = () => {
   return res
 }
 
-const makeNextMock = () => jest.fn()
-
 const sutFactory = () => {
   const decrypterMock = { decrypt: jest.fn() } as IDecrypter
   const sut: EnsureAuthenticatedMiddleware = new EnsureAuthenticatedMiddleware(decrypterMock)
@@ -36,9 +34,8 @@ describe('EnsureAuthenticatedMiddleware', () => {
     const { sut, decrypterMock } = sutFactory()
     const requestMock = makeRequestMock('Bearer validtoken')
     const responseMock = makeResponseMock()
-    const nextMock = makeNextMock()
 
-    await sut.handle(requestMock, responseMock, nextMock)
+    await sut.handle(requestMock, responseMock)
 
     expect(decrypterMock.decrypt).toHaveBeenCalledWith('validtoken')
   })
@@ -47,9 +44,8 @@ describe('EnsureAuthenticatedMiddleware', () => {
     const { sut } = sutFactory()
     const requestMock = makeRequestMock('')
     const responseMock = makeResponseMock()
-    const nextMock = makeNextMock()
 
-    await sut.handle(requestMock, responseMock, nextMock)
+    await sut.handle(requestMock, responseMock)
 
     expect(responseMock.status).toHaveBeenCalledWith(401)
     expect(responseMock.send).toHaveBeenCalledWith({ error: MESSAGES.tokenIsMissing })
@@ -60,10 +56,9 @@ describe('EnsureAuthenticatedMiddleware', () => {
 
     const requestMock = makeRequestMock('Bearer invalidtoken')
     const responseMock = makeResponseMock()
-    const nextMock = makeNextMock()
     decrypterMock.decrypt = jest.fn().mockRejectedValueOnce(new Error())
 
-    await sut.handle(requestMock, responseMock, nextMock)
+    await sut.handle(requestMock, responseMock)
 
     expect(responseMock.status).toHaveBeenCalledWith(401)
     expect(responseMock.send).toHaveBeenCalledWith({ error: MESSAGES.tokenIsInvalid })

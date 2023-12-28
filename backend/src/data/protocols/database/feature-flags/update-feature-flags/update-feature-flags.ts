@@ -1,3 +1,5 @@
+import { IListFeatureFlags } from '@/domain/usecases/feature-flags'
+
 export namespace IUpdateFeatureFlagRepository {
   export type Params = {
     id: string
@@ -7,7 +9,7 @@ export namespace IUpdateFeatureFlagRepository {
     created_at?: string
   }
 
-  export type Result = string
+  export type Result = string | IListFeatureFlags.FeatureFlag
 }
 
 export interface IUpdateFeatureFlagRepository {
