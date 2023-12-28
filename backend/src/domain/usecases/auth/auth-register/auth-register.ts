@@ -9,5 +9,5 @@ export namespace IAuthRegister {
 }
 
 export interface IAuthRegister {
-  authRegister(params: IAuthRegister.Params): Promise<IAuthRegister.Result>
+  authRegister(params: IAuthRegister.Params): Promise<string>
 }

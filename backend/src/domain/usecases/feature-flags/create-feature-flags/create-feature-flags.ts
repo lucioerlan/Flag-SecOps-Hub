@@ -9,5 +9,5 @@ export namespace ICreateFeatureFlag {
 }
 
 export interface ICreateFeatureFlag {
-  createFeatureFlag(params: ICreateFeatureFlag.Params): Promise<ICreateFeatureFlag.Result>
+  createFeatureFlag(params: ICreateFeatureFlag.Params): Promise<string>
 }
