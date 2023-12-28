@@ -1,4 +1,4 @@
-const useLoginFormInitialValues = () => {
+const useRegisterFormInitialValues = () => {
   return {
     name: '',
     email: '',
@@ -7,4 +7,4 @@ const useLoginFormInitialValues = () => {
   }
 }
 
-export default useLoginFormInitialValues
+export default useRegisterFormInitialValues

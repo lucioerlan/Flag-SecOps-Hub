@@ -1,9 +1,9 @@
 import { Tab, Toast } from '@/components'
-import useRegisterFormInitialValues from '@/constants/form-auth-register'
+import useRegisterFormInitialValues from '@/constants/authRegisterConstants'
 import { useI18n } from '@/hooks/useI18n'
-import { authRegister } from '@/services/auth'
-import { RequestAuthRegister } from '@/types/auth'
-import { RegisterSchema } from '@/validators/schemas'
+import { authRegister } from '@/services/authService'
+import { RequestAuthRegister } from '@/types'
+import { RegisterSchema } from '@/validators'
 import { Formik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -27,7 +27,7 @@ const Register = () => {
 
         setTimeout(() => {
           navigate('/login')
-        }, 2000)
+        }, 3000)
       } else {
         const messageKey = response.response.data.body
         toast.warning(t(`warning.${messageKey}`))

@@ -1,5 +1,4 @@
-import { debounce } from 'lodash'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { ActionButton, Text, ButtonGroup, Container, ContentArea, SearchContainer, TitleBar } from './styled'
 
@@ -12,11 +11,18 @@ type ToolbarProps = {
 }
 
 const Toolbar: React.FC<ToolbarProps> = ({ titleText, searchPlaceholder, buttonText, onCreateNew, onSearch }) => {
-  const debouncedOnSearch = debounce(onSearch, 300)
+  const [inputValue, setInputValue] = useState('')
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      onSearch(inputValue)
+    }, 500)
+
+    return () => clearTimeout(timerId)
+  }, [inputValue, onSearch])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-    debouncedOnSearch(value)
+    setInputValue(event.target.value)
   }
 
   return (

@@ -1,5 +1,5 @@
-import api from '@/factories/api'
-import { RequestAuthLogin, RequestAuthRegister, RequestAuthRefreshToken } from '@/types/auth'
+import api from '@/factories/apiFactory'
+import { RequestAuthLogin, RequestAuthRegister, RequestAuthRefreshToken } from '@/types'
 
 const authLogin = async ({ email, password }: RequestAuthLogin) => {
   try {

@@ -1,7 +1,7 @@
 import { Modal, Toast } from '@/components'
 import useFeatureFlags from '@/hooks/useFeatureFlags'
 import { useI18n } from '@/hooks/useI18n'
-import { TableData } from '@/types/feature-flags'
+import { TableData } from '@/types'
 import React, { useState } from 'react'
 
 import Body from './components/Body'
@@ -61,7 +61,7 @@ export default function Table({ tableData }: { tableData: TableData }) {
   }
 
   return (
-    <ShadowBox as="section" aria-labelledby="feature-flags-section">
+    <ShadowBox as="section" aria-labelledby="feature-flags-section" data-testid="table">
       <Toolbar
         titleText={t('table.toolbar.titleManageFeatureFlags')}
         buttonText={t('table.toolbar.createNewFeatureFlag')}

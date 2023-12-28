@@ -5,7 +5,7 @@ const translations = {
     deleteFeatureFlag: 'Feature Flag deletada com sucesso',
     updateFeatureFlag: 'Feature Flag atualizada com sucesso',
     createFeatureFlag: 'Feature Flag criada com sucesso',
-    welcomeBack: 'Bem-vindo de volta',
+    welcomeBack: 'Bem-vindo',
     wemissyou: 'Sentimos sua falta',
     successAccountCreation: 'Tudo pronto',
     letsdoit: 'Redirecionando para o login'

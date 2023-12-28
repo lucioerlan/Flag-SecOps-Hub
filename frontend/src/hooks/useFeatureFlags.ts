@@ -1,9 +1,9 @@
-import { listFeatureFlags } from '@/services/feature-flags'
-import { initializeFeatureFlags } from '@/store/reducers/feature-flagsReducer'
+import { listFeatureFlags } from '@/services/featureFlagsService'
+import { initializeFeatureFlags } from '@/store/reducers/featureFlagsReducer'
 import { useAppDispatch } from '@/store/shared'
 import { useQuery, useQueryClient } from 'react-query'
 
-const useFeatureFlags = () => {
+export default function useFeatureFlags() {
   const dispatch = useAppDispatch()
   const queryClient = useQueryClient()
 
@@ -19,5 +19,3 @@ const useFeatureFlags = () => {
 
   return { data, isSuccess, refetchFeatureFlags }
 }
-
-export default useFeatureFlags

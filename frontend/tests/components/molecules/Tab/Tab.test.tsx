@@ -1,11 +1,14 @@
-import Tab from '@/components/molecules/Tab'
+import { Tab } from '@/components'
 import { render, screen } from '@testing-library/react'
 
 describe('Tab component', () => {
+  const title = 'Tab'
+  const childrenContent = 'Tab children'
+
   beforeEach(() => {
     render(
-      <Tab data-testid="tab" title="Tab">
-        <div data-testid="tab-children">Tab children</div>
+      <Tab data-testid="tab" title={title}>
+        <div data-testid="tab-children">{childrenContent}</div>
       </Tab>
     )
   })
@@ -16,7 +19,7 @@ describe('Tab component', () => {
   })
 
   it('Should render tab children', () => {
-    const tabChildrenElement = screen.getByText('Tab children')
+    const tabChildrenElement = screen.getByText(childrenContent)
     expect(tabChildrenElement).toBeInTheDocument()
   })
 })

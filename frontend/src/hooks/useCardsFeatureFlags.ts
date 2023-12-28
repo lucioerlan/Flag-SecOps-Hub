@@ -1,4 +1,4 @@
-import { BodyFeatureFlags } from '@/types/feature-flags'
+import { BodyFeatureFlags } from '@/types'
 import { calculateSummary } from '@/utils'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'

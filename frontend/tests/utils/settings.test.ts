@@ -1,4 +1,4 @@
-import * as settings from '@/utils/settings'
+import * as settings from '@/utils'
 
 describe('settings', () => {
   it('restoreSettings should return null if no settings are stored', () => {

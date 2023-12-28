@@ -1,16 +1,33 @@
-import Chip from '@/components/atoms/Chip'
+import { Chip } from '@/components'
 import { render, screen } from '@testing-library/react'
-
-jest.mock('react-router-dom', () => ({
-  useNavigate: () => jest.fn()
-}))
+import userEvent from '@testing-library/user-event'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 describe('Chip component', () => {
+  const label = 'Back'
+  const link = '/home'
+
   beforeEach(() => {
-    render(<Chip link="/home" label="Back" data-testid="chip" />)
+    render(
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<div>Root</div>} />
+          <Route path={link.substring(1)} element={<div>Home Page</div>} />
+        </Routes>
+        <Chip link={link} label={label} />
+      </BrowserRouter>
+    )
   })
 
   it('should render Chip label', () => {
-    expect(screen.getByText('Back')).toBeDefined()
+    const chipElement = screen.getByText(label)
+    expect(chipElement).toBeInTheDocument()
+  })
+
+  it('should navigate to the correct page', async () => {
+    const chipElement = screen.getByText(label)
+    await userEvent.click(chipElement)
+    const homePage = screen.getByText('Home Page')
+    expect(homePage).toBeInTheDocument()
   })
 })
