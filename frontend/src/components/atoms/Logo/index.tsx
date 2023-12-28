@@ -6,6 +6,6 @@ type LogoProps = {
   'data-testid'?: string
 }
 
-const Logo = ({ ...props }: LogoProps) => <LogoWrapper {...props} />
+export const Logo = ({ ...props }: LogoProps) => <LogoWrapper {...props} />
 
 export default Logo

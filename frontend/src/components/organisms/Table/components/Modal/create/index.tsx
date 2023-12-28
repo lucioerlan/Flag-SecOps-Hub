@@ -1,10 +1,10 @@
 import { Input, Button, ErrorMessage, TextArea } from '@/components'
-import useFeatureFlagFormInitialValues from '@/constants/form-feature-flag'
+import useFeatureFlagFormInitialValues from '@/constants/featureFlagConstants'
 import { useI18n } from '@/hooks/useI18n'
 import { createFeatureFlagThunk } from '@/store/asyncThunks/createFeatureFlagThunk'
 import { useAppDispatch } from '@/store/shared'
-import { FeatureFlag } from '@/types/feature-flags'
-import { FeatureFlagSchema } from '@/validators/schemas'
+import { FeatureFlag } from '@/types'
+import { FeatureFlagSchema } from '@/validators'
 import { Formik, Form, FormikHelpers } from 'formik'
 import React from 'react'
 
