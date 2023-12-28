@@ -21,7 +21,7 @@ const makeFindFeatureFlagRepository = (): IFindFeatureFlagRepository => {
   return new FindFeatureFlagRepositoryStub()
 }
 
-const makeSut = (): {
+const sutFactory = (): {
   sut: IFindFeatureFlags
   findFeatureFlagRepositoryStub: IFindFeatureFlagRepository
 } => {
@@ -33,13 +33,13 @@ const makeSut = (): {
 
 describe('FindFeatureFlagUsecase', () => {
   it('should return feature flag details on successful find', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const result = await sut.findFeatureFlag('existing_id')
     expect(result).toEqual(mockFeatureFlag)
   })
 
   it('should return a not found message if the feature flag does not exist', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const result = await sut.findFeatureFlag('non_existing_id')
     expect(result).toBe(MESSAGES.featureFlagNotFound('non_existing_id'))
   })
