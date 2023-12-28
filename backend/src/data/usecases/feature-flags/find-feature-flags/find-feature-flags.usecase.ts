@@ -7,6 +7,6 @@ export class FindFeatureFlagUsecase implements IFindFeatureFlags {
 
   async findFeatureFlag(id: string): Promise<IFindFeatureFlags.Result> {
     const findresult = await this.findFeatureFlagRepository.findFeatureFlag(id)
-    return findresult ? findresult : MESSAGES.featureFlagNotFound(id)
+    return findresult || MESSAGES.featureFlagNotFound(id)
   }
 }

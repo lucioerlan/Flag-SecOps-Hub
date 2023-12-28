@@ -9,6 +9,6 @@ export namespace IAuthRegisterRepository {
 }
 
 export interface IAuthRegisterRepository {
-  findUserByEmail(email: string): Promise<IAuthRegisterRepository.Result>
-  addUser(userData: IAuthRegisterRepository.Params): Promise<IAuthRegisterRepository.Result>
+  findUserByEmail(email: string): Promise<string>
+  addUser(userData: IAuthRegisterRepository.Params): Promise<string>
 }
