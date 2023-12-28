@@ -21,7 +21,7 @@ const makeUpdateFeatureFlagRepository = (): IUpdateFeatureFlagRepository => {
   return new UpdateFeatureFlagRepositoryStub()
 }
 
-const makeSut = (): {
+const sutFactory = (): {
   sut: IUpdateFeatureFlag
   updateFeatureFlagRepositoryStub: IUpdateFeatureFlagRepository
 } => {
@@ -33,14 +33,15 @@ const makeSut = (): {
 
 describe('UpdateFeatureFlagUsecase', () => {
   it('should successfully update the feature flag and return the updated data', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const result = await sut.updateFeatureFlag(mockFeatureFlag)
     expect(result).toEqual(mockFeatureFlag)
   })
 
   it('should return a not found message if the feature flag does not exist', async () => {
-    const { sut, updateFeatureFlagRepositoryStub } = makeSut()
+    const { sut, updateFeatureFlagRepositoryStub } = sutFactory()
     jest.spyOn(updateFeatureFlagRepositoryStub, 'updateFeatureFlag').mockResolvedValueOnce(null)
+
     const result = await sut.updateFeatureFlag(mockFeatureFlag)
     expect(result).toBe(MESSAGES.featureFlagNotFound(mockFeatureFlag.id))
   })

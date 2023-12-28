@@ -37,7 +37,7 @@ const makeEncrypter = (): IEncrypter => {
   return new EncrypterStub()
 }
 
-const makeSut = (): {
+const sutFactory = (): {
   sut: IAuthLogin
   authLoginRepositoryStub: IAuthLoginRepository
   hashComparerStub: IHashComparer
@@ -53,22 +53,24 @@ const makeSut = (): {
 
 describe('AuthLoginUsecase', () => {
   it('should return an access token on successful login', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const loginData = { email: 'valid_email@mail.com', password: 'valid_password' }
     const result = await sut.authLogin(loginData)
     expect(result).toEqual({ type: STATUS.Success, accessToken: 'param_token', message: MESSAGES.loginSuccess })
   })
 
   it('should return an error if no user is found with the provided email', async () => {
-    const { sut, authLoginRepositoryStub } = makeSut()
+    const { sut, authLoginRepositoryStub } = sutFactory()
     jest.spyOn(authLoginRepositoryStub, 'findUserByEmail').mockResolvedValueOnce(null)
+
     const result = await sut.authLogin({ email: 'invalid_email@mail.com', password: 'param_password' })
     expect(result).toEqual({ type: STATUS.Error, message: MESSAGES.invalidEmail })
   })
 
   it('should return an error if the password is invalid', async () => {
-    const { sut, hashComparerStub } = makeSut()
+    const { sut, hashComparerStub } = sutFactory()
     jest.spyOn(hashComparerStub, 'compare').mockResolvedValueOnce(false)
+
     const result = await sut.authLogin({ email: 'valid_email@mail.com', password: 'invalid_password' })
     expect(result).toEqual({ type: STATUS.Error, message: MESSAGES.invalidPassword })
   })

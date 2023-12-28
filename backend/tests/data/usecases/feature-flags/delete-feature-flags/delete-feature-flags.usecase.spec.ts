@@ -12,7 +12,7 @@ const makeDeleteFeatureFlagRepository = (): IDeleteFeatureFlagRepository => {
   return new DeleteFeatureFlagRepositoryStub()
 }
 
-const makeSut = (): {
+const sutFactory = (): {
   sut: IDeleteFeatureFlag
   deleteFeatureFlagRepositoryStub: IDeleteFeatureFlagRepository
 } => {
@@ -24,13 +24,13 @@ const makeSut = (): {
 
 describe('DeleteFeatureFlagUsecase', () => {
   it('should return a success message on successful feature flag deletion', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const result = await sut.deleteFeatureFlag('existing_id')
     expect(result).toBe(MESSAGES.deleteFeatureFlagSuccess('existing_id'))
   })
 
   it('should return a not found message if the feature flag does not exist', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const result = await sut.deleteFeatureFlag('non_existing_id')
     expect(result).toBe(MESSAGES.featureFlagNotFound('non_existing_id'))
   })

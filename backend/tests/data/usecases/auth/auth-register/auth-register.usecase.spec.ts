@@ -25,7 +25,7 @@ const makeHasher = (): IHasher => {
   return new HasherStub()
 }
 
-const makeSut = (): {
+const sutFactory = (): {
   sut: IAuthRegister
   authRegisterRepositoryStub: IAuthRegisterRepository
   hasherStub: IHasher
@@ -39,15 +39,16 @@ const makeSut = (): {
 
 describe('AuthRegisterUsecase', () => {
   it('should return success message on successful registration', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const registerData = { name: 'valid_name', email: 'new_user@mail.com', password: 'valid_password' }
     const result = await sut.authRegister(registerData)
     expect(result).toBe(MESSAGES.userCreationSuccess(registerData.email, 'valid_user_id'))
   })
 
   it('should return user already exists message if user already exists', async () => {
-    const { sut, authRegisterRepositoryStub } = makeSut()
+    const { sut, authRegisterRepositoryStub } = sutFactory()
     jest.spyOn(authRegisterRepositoryStub, 'findUserByEmail').mockResolvedValueOnce('existing_user')
+
     const result = await sut.authRegister({
       name: 'valid_name',
       email: 'existing_user@mail.com',
@@ -57,8 +58,9 @@ describe('AuthRegisterUsecase', () => {
   })
 
   it('should return user creation fail message if unable to create user', async () => {
-    const { sut, authRegisterRepositoryStub } = makeSut()
+    const { sut, authRegisterRepositoryStub } = sutFactory()
     jest.spyOn(authRegisterRepositoryStub, 'addUser').mockResolvedValueOnce(null)
+
     const result = await sut.authRegister({
       name: 'valid_name',
       email: 'new_user@mail.com',

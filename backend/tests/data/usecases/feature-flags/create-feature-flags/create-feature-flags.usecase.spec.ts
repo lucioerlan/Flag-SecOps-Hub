@@ -12,7 +12,7 @@ const makeCreateFeatureFlagRepository = (): ICreateFeatureFlagRepository => {
   return new CreateFeatureFlagRepositoryStub()
 }
 
-const makeSut = (): {
+const sutFactory = (): {
   sut: ICreateFeatureFlag
   createFeatureFlagRepositoryStub: ICreateFeatureFlagRepository
 } => {
@@ -24,12 +24,13 @@ const makeSut = (): {
 
 describe('CreateFeatureFlagUsecase', () => {
   it('should return a success message on successful feature flag creation', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const featureFlagData = {
       name: 'Feature A',
       description: 'Description A',
       state: true
     }
+
     const result = await sut.createFeatureFlag(featureFlagData)
     expect(result).toBe(MESSAGES.createFeatureFlagSuccess(featureFlagData.name, 'valid_id'))
   })
