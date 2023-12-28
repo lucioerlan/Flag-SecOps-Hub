@@ -1,4 +1,4 @@
-## Pull Request - FlagSecOpsHub Backend
+## Pull Request - FlagSecOpsHub
 
 ### Descrição
 
