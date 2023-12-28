@@ -68,6 +68,10 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
+        with:
+          organization: "lucioerlan"
+          projectKey: "lucioerlan_Flag-SecOps-Hub"
+          projectBaseDir: "frontend"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
