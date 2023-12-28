@@ -1,4 +1,4 @@
-import { storeSettings } from '@/utils/settings'
+import { storeSettings } from '@/utils'
 import { createContext, useState, ReactNode } from 'react'
 
 const SettingsContext = createContext({

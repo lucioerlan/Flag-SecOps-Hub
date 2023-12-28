@@ -1,5 +1,5 @@
-import api from '@/factories/api'
-import { RequestCreateFeatureFlag, RequestUpdateFeatureFlag } from '@/types/feature-flags'
+import api from '@/factories/apiFactory'
+import { RequestCreateFeatureFlag, RequestUpdateFeatureFlag } from '@/types'
 
 const createFeatureFlag = async ({ name, description, state }: RequestCreateFeatureFlag) => {
   try {

@@ -1,11 +1,11 @@
 import { SettingsProvider } from '@/contexts/SettingsContext'
-import { restoreSettings } from '@/utils/settings'
+import { restoreSettings } from '@/utils'
 import { createRoot } from 'react-dom/client'
 import { QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 
 import App from './App'
-import { queryClient } from './factories/queryClient'
+import { queryClient } from './factories/queryClientFactory'
 import './translate' // i18n
 
 const settings = restoreSettings()

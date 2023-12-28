@@ -1,11 +1,11 @@
-import { BodyFeatureFlags, FeatureFlag } from '@/types/feature-flags'
+import { BodyFeatureFlags, FeatureFlag } from '@/types'
 import { capitalize, createFormattedHeaders, filterDataByQuery, formatDate, paginateData } from '@/utils'
 import { useState, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
 import { useI18n } from './useI18n'
 
-export const useTableManager = () => {
+export default function useTableManager() {
   const t = useI18n()
   const featureFlags = useSelector((state: BodyFeatureFlags) => state.featureFlags.body || [])
 
