@@ -1,10 +1,10 @@
 import { Tab, Toast } from '@/components'
-import useLoginFormInitialValues from '@/constants/form-auth-login'
+import useLoginFormInitialValues from '@/constants/authLoginConstants'
 import { useI18n } from '@/hooks/useI18n'
 import useSettings from '@/hooks/useSettings'
-import { authLogin } from '@/services/auth'
-import { RequestAuthLogin } from '@/types/auth'
-import { LoginSchema } from '@/validators/schemas'
+import { authLogin } from '@/services/authService'
+import { RequestAuthLogin } from '@/types'
+import { LoginSchema } from '@/validators'
 import { Formik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -24,7 +24,7 @@ const Login = () => {
 
     try {
       if (response.body && response.body.accessToken) {
-        toast.success(`${t('success.welcomeBack')} ${values.email}! ${t('success.wemissyou')} ❤️`)
+        toast.success(`${t('success.welcomeBack')} ${values.email}! ❤️`)
 
         setTimeout(() => {
           setSettings({
@@ -32,7 +32,7 @@ const Login = () => {
             isLoggedIn: true
           })
           navigate('/home')
-        }, 1500)
+        }, 2000)
       } else {
         const messageKey = response.response.data.body.message
         toast.warning(t(`warning.${messageKey}`))
