@@ -6,6 +6,6 @@ export class DeleteFeatureFlagRepository implements IDeleteFeatureFlagRepository
     const featureFlagsCollection = MongoHelper.getCollection('feature-flags')
     const deleteFeatureFlag = await featureFlagsCollection.deleteOne({ _id: MongoHelper.toObjectId(id) })
 
-    return deleteFeatureFlag && deleteFeatureFlag.deletedCount
+    return deleteFeatureFlag?.deletedCount
   }
 }
