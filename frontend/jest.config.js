@@ -8,7 +8,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   roots: ['<rootDir>', '<rootDir>/src'],
   setupFilesAfterEnv: ['./jest.setup.ts'],
-  testPathIgnorePatterns: ['node_modules/'],
+  testPathIgnorePatterns: ['/node_modules/', '.*(/__mocks__/.*)$'],
   watchPathIgnorePatterns: ['/node_modules/'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
