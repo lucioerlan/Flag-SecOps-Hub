@@ -1,4 +1,4 @@
-import { queryClient } from '@/factories/queryClient'
+import { queryClient } from '@/factories/queryClientFactory'
 import { QueryClient } from 'react-query'
 
 describe('persistQqueryClientueryClient', () => {

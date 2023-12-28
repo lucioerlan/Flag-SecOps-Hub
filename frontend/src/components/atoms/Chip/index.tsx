@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { ChipWrapper } from './styled'
 
-type ChipProps = {
+export type ChipProps = {
   link: string
   label: string
   'data-testid'?: string

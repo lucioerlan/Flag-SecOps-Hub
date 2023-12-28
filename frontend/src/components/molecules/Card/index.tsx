@@ -8,7 +8,7 @@ type CardData = {
 
 const Card = ({ cardData }: { cardData: CardData[] }) => {
   return (
-    <CardContainer role="list" aria-label="Card">
+    <CardContainer role="list" aria-label="Card" data-testid="card">
       {cardData.map((card, index) => (
         <CardBox key={index} role="listitem">
           <CardTitle tabIndex={0}>{card.title}</CardTitle>

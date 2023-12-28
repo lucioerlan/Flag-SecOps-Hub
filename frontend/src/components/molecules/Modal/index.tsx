@@ -17,7 +17,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null
 
   return (
-    <ModalOverlay onClick={onClose}>
+    <ModalOverlay onClick={onClose} data-testid="modal-overlay">
       <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalHeader>
           <Tooltip title={t('tooltip.modal.close')}>

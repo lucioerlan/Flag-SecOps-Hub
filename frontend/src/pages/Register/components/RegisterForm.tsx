@@ -1,7 +1,7 @@
 import { FlagSecopsHubLogo, Mail, Pass, User } from '@/assets'
 import { Frame, Button, ErrorMessage, Input, Form, Logo } from '@/components'
 import { useI18n } from '@/hooks/useI18n'
-import { FormAuthRegisterValues, OtherAuthRegisterProps, PasswordField } from '@/types/formik'
+import { FormAuthRegisterValues, OtherAuthRegisterProps, PasswordField } from '@/types'
 import { FormikProps } from 'formik'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'

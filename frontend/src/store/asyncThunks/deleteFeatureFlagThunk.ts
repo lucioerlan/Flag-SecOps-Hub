@@ -1,4 +1,4 @@
-import { deleteFeatureFlag } from '@/services/feature-flags'
+import { deleteFeatureFlag } from '@/services/featureFlagsService'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 
