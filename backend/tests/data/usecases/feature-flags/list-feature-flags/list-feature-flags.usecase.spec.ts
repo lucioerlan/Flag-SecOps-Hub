@@ -30,7 +30,7 @@ const makeListFeatureFlagsRepository = (): IListFeatureFlagsRepository => {
   return new ListFeatureFlagsRepositoryStub()
 }
 
-const makeSut = (): {
+const sutFactory = (): {
   sut: IListFeatureFlags
   listFeatureFlagsRepositoryStub: IListFeatureFlagsRepository
 } => {
@@ -42,15 +42,16 @@ const makeSut = (): {
 
 describe('ListFeatureFlagsUsecase', () => {
   it('should return a list of feature flags', async () => {
-    const { sut } = makeSut()
+    const { sut } = sutFactory()
     const result = await sut.listFeatureFlags()
     expect(result.length).toBe(2)
     expect(result).toEqual(mockListFeatureFlagsRepository)
   })
 
   it('should return an empty list if no feature flags are found', async () => {
-    const { sut, listFeatureFlagsRepositoryStub } = makeSut()
+    const { sut, listFeatureFlagsRepositoryStub } = sutFactory()
     jest.spyOn(listFeatureFlagsRepositoryStub, 'listFeatureFlags').mockResolvedValueOnce([])
+
     const result = await sut.listFeatureFlags()
     expect(result.length).toBe(0)
   })

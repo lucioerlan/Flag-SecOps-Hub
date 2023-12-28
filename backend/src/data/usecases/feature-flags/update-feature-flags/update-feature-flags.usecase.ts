@@ -7,6 +7,6 @@ export class UpdateFeatureFlagUsecase implements IUpdateFeatureFlag {
 
   async updateFeatureFlag(data: IUpdateFeatureFlag.Params): Promise<IUpdateFeatureFlag.Result> {
     const updateResult = await this.updateFeatureFlagRepository.updateFeatureFlag(data)
-    return updateResult ? updateResult : MESSAGES.featureFlagNotFound(data.id)
+    return updateResult || MESSAGES.featureFlagNotFound(data.id)
   }
 }

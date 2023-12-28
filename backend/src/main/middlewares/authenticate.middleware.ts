@@ -1,7 +1,6 @@
 import { IDecrypter } from '@/data/protocols/cryptography/jwt/jwt'
 import { MESSAGES } from '@/domain/entities'
-import { Request, Response } from '@/presentation/protocols'
-import { HttpResponse, Middleware } from '@/presentation/protocols'
+import { Request, Response, HttpResponse, Middleware } from '@/presentation/protocols'
 
 export class EnsureAuthenticatedMiddleware implements Middleware {
   constructor(private readonly decrypter: IDecrypter) {}

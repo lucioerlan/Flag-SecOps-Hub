@@ -5,9 +5,9 @@ export namespace ICreateFeatureFlag {
     state: boolean
   }
 
-  export type Result = string
+  export type Result = string | null
 }
 
 export interface ICreateFeatureFlag {
-  createFeatureFlag(params: ICreateFeatureFlag.Params): Promise<ICreateFeatureFlag.Result>
+  createFeatureFlag(params: ICreateFeatureFlag.Params): Promise<string>
 }

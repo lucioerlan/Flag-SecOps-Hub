@@ -5,9 +5,9 @@ export namespace IAuthRegister {
     password: string
   }
 
-  export type Result = string
+  export type Result = string | null
 }
 
 export interface IAuthRegister {
-  authRegister(params: IAuthRegister.Params): Promise<IAuthRegister.Result>
+  authRegister(params: IAuthRegister.Params): Promise<string>
 }
