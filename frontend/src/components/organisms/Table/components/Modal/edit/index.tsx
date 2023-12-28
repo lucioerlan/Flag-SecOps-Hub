@@ -45,18 +45,18 @@ const FeatureFlagEdit: React.FC<FeatureFlagEditProps> = ({ onClose, flag }: Feat
           <Input
             color="#fff"
             name="name"
-            placeholder={t('input.nameFeatureFlag')}
             className={`form-control ${touched.name && errors.name ? '-invalid' : ''}`}
+            placeholder={t('input.nameFeatureFlag')}
           />
           <ErrorMessage component="div" name="name" className="error-form" />
 
           <TextArea
             color="#fff"
             name="description"
-            placeholder={t('input.descriptionFeatureFlag')}
             className={`form-control ${touched.description && errors.description ? '-invalid' : ''}`}
             value={values.description}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFieldValue('description', e.target.value)}
+            placeholder={t('input.descriptionFeatureFlag')}
           />
           <ErrorMessage component="div" name="description" className="error-form" />
 
@@ -65,13 +65,13 @@ const FeatureFlagEdit: React.FC<FeatureFlagEditProps> = ({ onClose, flag }: Feat
               type="checkbox"
               id="stateToggle"
               name="state"
-              checked={values.state}
               onChange={() => setFieldValue('state', !values.state)}
+              checked={values.state}
             />
             <span onClick={() => setFieldValue('state', !values.state)}></span>
           </StyledToggle>
 
-          <ToggleLabel htmlFor="stateToggle" tabIndex={0}>
+          <ToggleLabel tabIndex={0} htmlFor="stateToggle">
             {values.state ? t('labels.stateFeatureFlagOn') : t('labels.stateFeatureFlagOff')}
           </ToggleLabel>
 
