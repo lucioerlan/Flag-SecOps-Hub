@@ -1,4 +1,4 @@
-import useLoginFormInitialValues from '@/constants/form-auth-login'
+import useLoginFormInitialValues from '@/constants/authLoginConstants'
 
 describe('useLoginFormInitialValues', () => {
   it('should have the correct default values for FormLogin', () => {
