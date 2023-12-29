@@ -29,4 +29,4 @@ RUN addgroup -S appuser && adduser -S appuser -G appuser \
 USER appuser
 
 # Set node as the entrypoint
-ENTRYPOINT ["node", "-r", "./tsconfig-paths-dist.js", "dist/app.js"]
+ENTRYPOINT ["node", "-r", "./tsconfig-paths-dist.js", "dist/main/config/app.js"]

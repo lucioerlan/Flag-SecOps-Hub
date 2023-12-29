@@ -23,8 +23,8 @@ services:
       MONGO_URL: mongodb://db:27017/flag-secops-hub
       DB_NAME: flag-secops-hub
       CORS_ORIGIN: http://localhost:3000
-      JWT_SECRET: er123lan_gbtech$%&*()_+
-      COOKIE_SECRET: lu123cio_gbtech$%&*()_+
+      JWT_SECRET: er123lan_local
+      COOKIE_SECRET: lu123cio_local
     restart: on-failure
     depends_on:
       - database

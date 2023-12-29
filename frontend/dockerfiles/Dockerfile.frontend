@@ -28,5 +28,5 @@ RUN addgroup -S appuser && adduser -S appuser -G appuser \
 USER appuser
 
 # Setting the command to start your application
-CMD ["npm", "start"]
+CMD ["npm", "dev"]
 
