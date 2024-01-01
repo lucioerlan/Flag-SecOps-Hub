@@ -1,4 +1,4 @@
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import * as Yup from 'yup'
 
 export const FeatureFlagSchema = () => {
