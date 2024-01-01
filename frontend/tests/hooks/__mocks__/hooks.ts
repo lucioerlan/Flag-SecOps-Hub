@@ -7,7 +7,7 @@ export const useContextMock = jest.fn().mockReturnValue({
   t: jest.fn().mockImplementation((key) => key)
 })
 
-export const reactMocks = {
+export const mocksHooks = {
   ...actualReact,
   useMemo: useMemoMock,
   useState: useStateMock,

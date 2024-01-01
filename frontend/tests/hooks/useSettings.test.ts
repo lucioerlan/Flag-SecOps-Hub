@@ -1,10 +1,10 @@
 /* eslint-disable import-helpers/order-imports */
-import { reactMocks } from './__mocks__/hooks'
+import { mocksHooks } from './__mocks__/hooks'
 
 import '@testing-library/jest-dom'
 import * as useSettings from '@/hooks/useSettings'
 
-jest.mock('react', () => reactMocks)
+jest.mock('react', () => mocksHooks)
 
 describe('useSettings hook', () => {
   it('should have called the useSettings method', () => {
