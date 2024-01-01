@@ -1,12 +1,11 @@
 import { FeatureFlagSchema } from '@/validators/featureFlagFormSchema'
 import { ObjectSchema } from 'yup'
 
-import { messages } from './__mocks__/messages'
+import { mockMessages } from './__mocks__/messages'
 
 jest.mock('@/hooks/useI18n', () => ({
-  useI18n: () => (key: string) => {
-    return messages[key] || key
-  }
+  __esModule: true,
+  default: () => (key: string) => mockMessages[key] || key
 }))
 
 describe('FeatureFlagSchema', () => {
