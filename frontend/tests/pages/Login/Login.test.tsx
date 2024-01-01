@@ -1,25 +1,20 @@
+/* eslint-disable import-helpers/order-imports */
+import { mockNavigate, reactRouterDomMock, toastifyMock } from '../__mocks__/auth'
+
 import Login from '@/pages/Login'
 import * as authService from '@/services/authService'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-jest.mock('@/services/authService')
-const mockNavigate = jest.fn()
-
+jest.mock('react-toastify', () => ({
+  ...jest.requireActual('react-toastify'),
+  toast: toastifyMock()
+}))
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockNavigate
-}))
-
-jest.mock('react-toastify', () => ({
-  ToastContainer: jest.fn().mockImplementation(() => <div role="alert">Mock ToastContainer</div>),
-  toast: {
-    success: jest.fn(),
-    error: jest.fn(),
-    warning: jest.fn()
-  }
+  ...reactRouterDomMock()
 }))
 
 describe('Login', () => {
@@ -27,7 +22,7 @@ describe('Login', () => {
     render(<Login />, { wrapper: MemoryRouter })
     const emailInput = screen.getByPlaceholderText(/email/i)
     const passwordInput = screen.getByPlaceholderText(/password/i)
-    const submitButton = screen.getByRole('button', { name: /login/i })
+    const submitButton = screen.getByRole('button', { name: /button\.enter/i })
     return { emailInput, passwordInput, submitButton }
   }
 
@@ -44,7 +39,9 @@ describe('Login', () => {
     await userEvent.type(emailInput, 'test@example.com')
     await userEvent.type(passwordInput, 'password123')
     await userEvent.click(submitButton)
+
     expect(toast.success).toHaveBeenCalled()
+    expect(mockNavigate).toHaveBeenCalledWith('/home')
   })
 
   it('displays validation errors when inputs are invalid', async () => {
@@ -89,5 +86,16 @@ describe('Login', () => {
     await userEvent.type(passwordInput, 'password123')
     await userEvent.click(submitButton)
     expect(toast.warning).toHaveBeenCalled()
+  })
+
+  it('displays an error toast when login fails due to an unexpected error', async () => {
+    jest.spyOn(authService, 'authLogin').mockRejectedValue(new Error('Unexpected error'))
+
+    const { emailInput, passwordInput, submitButton } = setup()
+    await userEvent.type(emailInput, 'test@example.com')
+    await userEvent.type(passwordInput, 'password123')
+
+    await userEvent.click(submitButton)
+    await waitFor(() => expect(toast.error).toHaveBeenCalled())
   })
 })
