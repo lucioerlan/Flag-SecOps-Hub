@@ -11,7 +11,9 @@ const SettingsContext = createContext({
     accessToken: '',
     isLoggedIn: false
   },
-  setSettings: (settings: object) => {}
+  setSettings: (settings: object) => {
+    settings
+  }
 })
 
 export const defaultSettings = {
