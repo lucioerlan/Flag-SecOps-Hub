@@ -6,6 +6,10 @@ export const Container = styled.div`
 
 export const ContentArea = styled(Container)`
   padding: 20px 25px;
+
+  @media (max-width: 768px) {
+    padding: 16px 20px;
+  }
 `
 
 export const TitleBar = styled(Container)`
@@ -13,6 +17,11 @@ export const TitleBar = styled(Container)`
   justify-content: space-between;
   align-items: center;
   position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 export const Text = styled.h1`
@@ -26,6 +35,10 @@ export const Text = styled.h1`
   line-height: 40px;
   padding: 0;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `
 
 export const ButtonGroup = styled.div`
@@ -76,5 +89,9 @@ export const ActionButton = styled.button`
   &:hover {
     background-color: rgb(85, 82, 158);
     transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
   }
 `

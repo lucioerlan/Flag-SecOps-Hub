@@ -1,18 +1,18 @@
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { ReactNode } from 'react'
 
 import { CloseButton, ModalContent, ModalHeader, ModalOverlay, Tooltip } from './styled'
 
 type ModalMode = 'create' | 'edit' | 'delete'
 
-interface ModalProps {
+export type ModalProps = {
   isOpen: boolean
   onClose: () => void
   mode?: ModalMode
   children: ReactNode
 }
 
-const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   const t = useI18n()
   if (!isOpen) return null
 
