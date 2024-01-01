@@ -1,4 +1,4 @@
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import useSettings from '@/hooks/useSettings'
 import { useNavigate } from 'react-router-dom'
 
