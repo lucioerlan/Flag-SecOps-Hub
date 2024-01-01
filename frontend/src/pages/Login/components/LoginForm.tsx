@@ -31,28 +31,28 @@ export const LoginForm = (props: OtherAuthLoginProps & FormikProps<FormAuthLogin
         <Logo src={FlagSecopsHubLogo} alt="Logo" />
 
         <Input
-          aria-label={t('input.email')}
-          aria-invalid={touched.email && errors.email ? 'true' : 'false'}
-          aria-describedby="email-error"
           color="#fff"
           image={Mail}
           type="email"
           name="email"
           placeholder={t('input.email')}
           className={`form-control ${touched.email && errors.email ? '-invalid' : ''}`}
+          aria-label={t('input.email')}
+          aria-invalid={touched.email && errors.email ? 'true' : 'false'}
+          aria-describedby="email-error"
         />
         <ErrorMessage component="div" name="email" className="error-form" />
 
         <Input
-          aria-label={t('input.password')}
-          aria-invalid={touched.password && errors.password ? 'true' : 'false'}
-          aria-describedby="password-error"
           color="#fff"
           image={Pass}
           type={showPassword ? 'text' : 'password'}
           name="password"
           placeholder={t('input.password')}
           className={`form-control ${touched.password && errors.password ? '-invalid' : ''}`}
+          aria-label={t('input.password')}
+          aria-invalid={touched.password && errors.password ? 'true' : 'false'}
+          aria-describedby="password-error"
         />
         <Password showPassword={showPassword} handleClickPassword={handleClickPassword} />
         <ErrorMessage component="div" name="password" className="error-form" aria-live="assertive" />
