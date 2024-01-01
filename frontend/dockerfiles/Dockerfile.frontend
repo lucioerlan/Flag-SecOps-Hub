@@ -1,5 +1,5 @@
 # Build
-FROM node:20-alpine AS builder
+FROM node:20-slim AS builder
 
 WORKDIR /app
 
@@ -10,22 +10,22 @@ RUN npm ci \
     && npm run build
 
 # Release
-FROM node:20-alpine
+FROM node:20-slim
 
 WORKDIR /app
 
 # Copy
-COPY --from=builder /app/package*.json /app/
-COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/dist ./dist
 
 # Grant permissions for the appuser
-RUN addgroup -S appuser && adduser -S appuser -G appuser \
-    && chown -R appuser:appuser /app/ \
-    && chmod 756 /app/
+RUN addgroup --system appuser && adduser --system --ingroup appuser appuser \
+    && chown -R appuser:appuser /app/
 
 # Change to non-root privilege
 USER appuser
+
+# Expose port
+EXPOSE 3000
 
 # Setting the command to start your application
 CMD ["npm", "dev"]
