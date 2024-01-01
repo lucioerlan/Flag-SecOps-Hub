@@ -1,12 +1,12 @@
 import { CardBox, CardContainer, CardContent, CardText, CardTitle, CardValue } from './styled'
 
-type CardData = {
+export type CardData = {
   title: string
   value: string | number
   description: string
 }
 
-const Card = ({ cardData }: { cardData: CardData[] }) => {
+export const Card = ({ cardData }: { cardData: CardData[] }) => {
   return (
     <CardContainer role="list" aria-label="Card" data-testid="card">
       {cardData.map((card, index) => (

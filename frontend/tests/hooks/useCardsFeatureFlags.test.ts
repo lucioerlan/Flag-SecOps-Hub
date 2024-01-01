@@ -1,12 +1,12 @@
 /* eslint-disable import-helpers/order-imports */
-import { reactMocks } from './__mocks__/hooks'
+import { mocksHooks } from './__mocks__/hooks'
 
 import '@testing-library/jest-dom'
 import useCardsFeatureFlags from '@/hooks/useCardsFeatureFlags'
 import { useMemo } from 'react'
 import * as ReactRedux from 'react-redux'
 
-jest.mock('react', () => reactMocks)
+jest.mock('react', () => mocksHooks)
 jest.mock('react-redux', () => ({
   useSelector: jest.fn()
 }))
@@ -19,7 +19,23 @@ describe('useCardsFeatureFlags', () => {
     mockedUseSelector.mockImplementation((selector) =>
       selector({
         featureFlags: {
-          body: [{ title: 'Total', value: 10, description: 'Total' }]
+          body: [
+            {
+              name: 'test1',
+              description: 'test1',
+              state: true
+            },
+            {
+              name: 'test2',
+              description: 'test2',
+              state: true
+            },
+            {
+              name: 'test3',
+              description: 'test3',
+              state: false
+            }
+          ]
         }
       })
     )
@@ -34,8 +50,8 @@ describe('useCardsFeatureFlags', () => {
     const cards = useCardsFeatureFlags()
 
     const expectedCards = [
-      { description: 'cards.description.total', title: 'cards.title.total', value: 1 },
-      { description: 'cards.description.active', title: 'cards.title.active', value: 0 },
+      { description: 'cards.description.total', title: 'cards.title.total', value: 3 },
+      { description: 'cards.description.active', title: 'cards.title.active', value: 2 },
       { description: 'cards.description.inactive', title: 'cards.title.inactive', value: 1 },
       { description: 'cards.description.beta', title: 'cards.title.beta', value: 0 }
     ]

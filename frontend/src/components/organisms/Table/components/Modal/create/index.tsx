@@ -1,9 +1,8 @@
 import { Input, Button, ErrorMessage, TextArea } from '@/components'
 import useFeatureFlagFormInitialValues from '@/constants/featureFlagConstants'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { createFeatureFlagThunk } from '@/store/asyncThunks/createFeatureFlagThunk'
 import { useAppDispatch } from '@/store/shared'
-import { FeatureFlag } from '@/types'
 import { FeatureFlagSchema } from '@/validators'
 import { Formik, Form, FormikHelpers } from 'formik'
 import React from 'react'
@@ -12,7 +11,6 @@ import { ButtonContainer, ToggleLabel, StyledToggle } from './styled'
 
 type FeatureFlagCreateProps = {
   onClose: () => void
-  onFlagCreated: (flag: FeatureFlag) => void
 }
 type FormValues = {
   name: string
@@ -44,7 +42,7 @@ const FeatureFlagCreate: React.FC<FeatureFlagCreateProps> = ({ onClose }: Featur
             placeholder={t('input.nameFeatureFlag')}
             className={`form-control ${touched.name && errors.name ? '-invalid' : ''}`}
           />
-          <ErrorMessage component="div" name="name" className="error-form" />
+          <ErrorMessage component="span" name="name" />
 
           <TextArea
             color="#fff"
@@ -54,7 +52,7 @@ const FeatureFlagCreate: React.FC<FeatureFlagCreateProps> = ({ onClose }: Featur
             value={values.description}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFieldValue('description', e.target.value)}
           />
-          <ErrorMessage component="div" name="description" className="error-form" />
+          <ErrorMessage component="div" name="description" />
 
           <StyledToggle>
             <input
@@ -63,6 +61,8 @@ const FeatureFlagCreate: React.FC<FeatureFlagCreateProps> = ({ onClose }: Featur
               name="state"
               checked={values.state}
               onChange={() => setFieldValue('state', !values.state)}
+              aria-checked={values.state}
+              aria-label="Enable or disable feature flag"
             />
             <span onClick={() => setFieldValue('state', !values.state)}></span>
           </StyledToggle>
@@ -73,7 +73,6 @@ const FeatureFlagCreate: React.FC<FeatureFlagCreateProps> = ({ onClose }: Featur
 
           <ButtonContainer>
             <Button
-              aria-label="create button"
               type="submit"
               color="#fff"
               hover="rgb(235, 233, 233)"

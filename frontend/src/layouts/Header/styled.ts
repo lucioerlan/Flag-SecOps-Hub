@@ -45,6 +45,16 @@ export const Logo = styled.img.attrs({
 })`
   width: 50px;
   height: 50px;
+  srcset: {
+    2x: {
+      width: 60px;
+      height: 60px;
+    }
+    3x: {
+      width: 70px;
+      height: 70px;
+    }
+  }
 `
 
 export const StyledExitButton = styled.img.attrs({

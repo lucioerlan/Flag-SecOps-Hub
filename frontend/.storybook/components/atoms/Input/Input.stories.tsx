@@ -12,7 +12,7 @@ export default {
 }
 
 export const Primary = (args) => (
-  <Formik initialValues={{ name: '' }} onSubmit={(values) => console.log(values)}>
+  <Formik initialValues={{ name: '' }} onSubmit={(values) => {}}>
     <Form>
       <Field as={Input} {...args} />
     </Form>

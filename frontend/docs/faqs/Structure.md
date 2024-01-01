@@ -1,6 +1,6 @@
 #### Visão Geral
 
-Este documento oferece uma visão técnica detalhada da estrutura do projeto Flag SecOps Hub. Ele descreve a organização dos diretórios, padrões de codificação, e ferramentas específicas utilizadas para manter o projeto escalável, manutenível e eficiente.
+Este documento oferece uma visão técnica detalhada da estrutura do projeto Flag SecOps Hub. A disposição dos diretórios e arquivos foi pensada para refletir claramente as diferentes camadas da arquitetura, separando as responsabilidades e tornando mais fácil entender e gerenciar o código.
 
 Estrutura de Diretórios
 Logo abaixo está detalhamento técnico da estrutura de diretórios adotada e o propósito de cada diretório:

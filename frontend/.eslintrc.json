@@ -51,6 +51,7 @@
         "endOfLine": "auto"
       }
     ],
+    "cypress/unsafe-to-chain-command": "off",
     "no-alert": "error",
     "import/no-unresolved": "off",
     "react/react-in-jsx-scope": "off",

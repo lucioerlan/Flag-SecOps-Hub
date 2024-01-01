@@ -1,6 +1,6 @@
 type Messages = { [key: string]: string }
 
-export const messages: Messages = {
+export const mockMessages: Messages = {
   'input.errorEmail.type.message': 'Invalid email format.',
   'input.errorEmail.required.message': 'Email is required.',
   'input.errorPass.type.message': 'Password must be at least 6 characters.',

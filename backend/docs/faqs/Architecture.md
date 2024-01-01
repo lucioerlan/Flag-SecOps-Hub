@@ -1,21 +1,31 @@
-#### Visão Geral
+# Arquitetura do Flag SecOps Hub
 
-Este documento apresenta a arquitetura que implementei para o backend do Flag SecOps Hub. Vou compartilhar minhas decisões, as razões por trás delas e como elas contribuem para um sistema coeso, eficiente e escalável.
+## Visão Geral
 
-**Visão Geral da Arquitetura**
+Este documento mostra como montei a arquitetura para o backend do Flag SecOps Hub. Vou explicar as decisões tomadas, por que foram feitas e como elas ajudam a criar um sistema integrado, eficiente e fácil de escalar.
 
-A arquitetura do backend foi cuidadosamente escolhida para atender às necessidades específicas do Flag SecOps Hub, equilibrando eficiência, escalabilidade e facilidade de manutenção. Aqui estão os principais aspectos dessa arquitetura:
+## Arquitetura do Backend
 
-**1. Clean Architecture:**
+A arquitetura do backend foi cuidadosamente escolhida para atender às especificidades do Flag SecOps Hub, buscando equilíbrio entre desempenho, capacidade de expansão e simplicidade de manutenção.
 
-- Eu escolhi a Clean Architecture para estruturar o backend do projeto. Essa abordagem me permite separar claramente o domínio e a lógica de negócios das interfaces de usuário, frameworks e bancos de dados. A adesão a esta arquitetura resulta em um sistema mais testável, flexível e independente de tecnologia externa.
+### Clean Architecture
 
-- Camadas: Dividi a aplicação em distintas camadas (Presentation, Application, Domain, Infrastructure), cada uma com sua responsabilidade específica.
-  Independência: Cada camada é independente e interage com as outras apenas através de interfaces bem definidas. 2. Domain-Driven Design (DDD):
+- **Escolha Arquitetural:** Escolhi a Clean Architecture para organizar o backend do projeto. Essa abordagem ajuda a manter uma separação clara entre o núcleo do negócio e as interfaces de usuário, além de frameworks e bancos de dados. Isso torna o sistema mais fácil de testar e menos dependente de tecnologias específicas.
 
-- Implementei DDD para alinhar o design do backend com as regras e processos de negócio do Flag SecOps Hub. Esse foco no domínio ajuda a garantir que a base de código reflita fielmente os requisitos e complexidades do projeto, facilitando a manutenção e o desenvolvimento futuro.
+- **Organização em Camadas:** Separei a aplicação em várias camadas, como Apresentação, Aplicação, Domínio e Infraestrutura, com cada uma tendo suas próprias tarefas definidas.
 
-- Modelagem de Domínio: O coração do sistema são os modelos de domínio, que definem a estrutura de dados e a lógica de negócios.
-  Bounded Contexts: Organizei o código em contextos limitados para manter as funcionalidades relacionadas agrupadas e desacopladas de outras partes do sistema.
+- **Independência entre Camadas:** Cada camada funciona de forma independente, se comunicando através de interfaces bem estabelecidas.
+
+### Domain-Driven Design (DDD)
+
+- **Adoção do DDD:** Usei o Domain-Driven Design para que o design do backend refletisse bem as regras e processos de negócio do Flag SecOps Hub. Isso ajuda a garantir que o código esteja alinhado com as necessidades e complexidades específicas do projeto.
+
+- **Modelagem de Domínio:** Criei modelos de domínio que definem a estrutura de dados e as regras de negócio, atuando como o coração do sistema.
+
+- **Contextos Limitados:** Organizei o código em contextos limitados para manter as funcionalidades relacionadas juntas e separadas de outras partes do sistema.
+
+## Conclusão
+
+A escolha dessa arquitetura reflete minha dedicação em construir um backend bem integrado, eficiente e preparado para crescer junto com o Flag SecOps Hub.
 
 ![clean_arch](../images/clean_arch.png)

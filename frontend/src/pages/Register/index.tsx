@@ -1,39 +1,46 @@
 import { Tab, Toast } from '@/components'
 import useRegisterFormInitialValues from '@/constants/authRegisterConstants'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { authRegister } from '@/services/authService'
 import { RequestAuthRegister } from '@/types'
 import { RegisterSchema } from '@/validators'
 import { Formik } from 'formik'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { RegisterForm } from './components/RegisterForm'
 
-const Register = () => {
+const Register: React.FC = () => {
   const t = useI18n()
   const navigate = useNavigate()
 
-  const tryToRegister = async (values: RequestAuthRegister) => {
-    const response = await authRegister({
-      name: values.name,
-      email: values.email,
-      password: values.password
+  const onRegisterSuccess = (email: string) => {
+    toast.success(`${t('success.successAccountCreation')} ${email}! ${t('success.letsdoit')} 🚀`, {
+      onClose: () => navigate('/login'),
+      autoClose: 1000
     })
+  }
 
+  const onRegisterFailure = (messageKey: string) => {
+    toast.warning(t(`warning.${messageKey}`))
+  }
+
+  const onRegisterError = () => {
+    toast.error(t('error.register'))
+  }
+
+  const tryToRegister = async (values: RequestAuthRegister) => {
     try {
-      if (response.body && response.body.includes('created with success')) {
-        toast.success(`${t('success.successAccountCreation')} ${values.email}! ${t('success.letsdoit')} 🚀`)
+      const response = await authRegister(values)
 
-        setTimeout(() => {
-          navigate('/login')
-        }, 3000)
+      if (response.body && response.body.includes('created with success')) {
+        onRegisterSuccess(values.email)
       } else {
-        const messageKey = response.response.data.body
-        toast.warning(t(`warning.${messageKey}`))
+        onRegisterFailure(response.response.data.body)
       }
     } catch (error) {
-      toast.error(t('error.register'))
+      onRegisterError()
     }
   }
 

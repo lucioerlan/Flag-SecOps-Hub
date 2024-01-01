@@ -8,9 +8,7 @@ jest.mock('@/hooks/useSettings', () => {
   const setSettings = jest.fn()
   return {
     __esModule: true,
-    default: jest.fn(() => ({
-      setSettings
-    }))
+    default: jest.fn(() => ({ setSettings }))
   }
 })
 

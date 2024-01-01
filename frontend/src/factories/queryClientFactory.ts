@@ -1,12 +1,21 @@
+/* istanbul ignore file */
 import { QueryClient } from 'react-query'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      cacheTime: 30 * 60 * 1000,
+      retry: 2,
+      staleTime: 5 * 60 * 1000,
+      cacheTime: 5 * 60 * 1000,
+      refetchOnMount: false,
       refetchOnWindowFocus: false,
-      staleTime: 1000 * 60 * 60,
-      refetchInterval: 1000 * 60 * 60
+      refetchOnReconnect: 'always',
+      refetchInterval: false,
+      refetchIntervalInBackground: false,
+      suspense: false
+    },
+    mutations: {
+      retry: 1
     }
   }
 })

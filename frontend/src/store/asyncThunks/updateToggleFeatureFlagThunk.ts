@@ -3,11 +3,11 @@ import { FeatureFlag } from '@/types'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 
-interface FeatureFlagsState {
+type FeatureFlagsState = {
   body: FeatureFlag[]
 }
 
-interface UpdateFeatureFlagPayload {
+type UpdateFeatureFlagPayload = {
   id: string
   translate: (key: string) => string
 }

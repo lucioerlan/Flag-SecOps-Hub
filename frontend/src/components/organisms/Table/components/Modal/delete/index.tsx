@@ -1,4 +1,4 @@
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { deleteFeatureFlagThunk } from '@/store/asyncThunks/deleteFeatureFlagThunk'
 import { useAppDispatch } from '@/store/shared'
 
@@ -6,23 +6,16 @@ import { ConfirmationMessage, StyledButton, ButtonContainer } from './styled'
 
 type FeatureFlagDeleteProps = {
   onClose: () => void
-  onFlagDeleted: (id: string) => void
   flagId: string
   flagName: string
 }
 
-const FeatureFlagDelete: React.FC<FeatureFlagDeleteProps> = ({
-  onClose,
-  onFlagDeleted,
-  flagId,
-  flagName
-}: FeatureFlagDeleteProps) => {
+const FeatureFlagDelete: React.FC<FeatureFlagDeleteProps> = ({ onClose, flagId, flagName }: FeatureFlagDeleteProps) => {
   const t = useI18n()
   const dispatch = useAppDispatch()
 
   const handleDelete = async () => {
-    dispatch(deleteFeatureFlagThunk({ flagId, translate: t }))
-    onFlagDeleted(flagId)
+    await dispatch(deleteFeatureFlagThunk({ flagId, translate: t }))
     onClose()
   }
 

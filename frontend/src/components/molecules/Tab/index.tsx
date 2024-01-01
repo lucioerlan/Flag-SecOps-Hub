@@ -1,13 +1,13 @@
 import React, { forwardRef } from 'react'
 import { Helmet } from 'react-helmet'
 
-type TabProps = {
+export type TabProps = {
   children: React.ReactNode
   title: string
   'data-testid'?: string
 }
 
-const Tab = forwardRef<HTMLDivElement, TabProps>(({ title = '', children, ...rest }, ref) => (
+export const Tab = forwardRef<HTMLDivElement, TabProps>(({ title, children, ...rest }, ref) => (
   <div ref={ref} {...rest}>
     <Helmet>
       <title>{title}</title>

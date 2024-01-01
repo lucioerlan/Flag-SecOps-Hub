@@ -18,7 +18,7 @@ export const StyledToggle = styled.div`
   display: inline-block;
   width: 50px;
   height: 24px;
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
 
   & input {
     opacity: 0;
@@ -65,4 +65,10 @@ export const StyledToggle = styled.div`
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
+`
+
+export const StyledErrorMessage = styled.div`
+  color: #dc3545;
+  margin-top: 4px;
+  font-size: 0.875rem;
 `

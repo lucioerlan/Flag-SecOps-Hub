@@ -1,6 +1,8 @@
+import React from 'react'
+
 import { ButtonWrapper } from './styled'
 
-type Props = {
+export type ImageButtonProps = {
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>
   label: string
   color: string
@@ -9,8 +11,8 @@ type Props = {
   IconRight?: boolean
 }
 
-const ImageButton = ({ Icon, ...props }: Props) => (
-  <ButtonWrapper Outline IconRight {...props}>
+const ImageButton = ({ Icon, ...props }: ImageButtonProps) => (
+  <ButtonWrapper {...props}>
     {Icon && <Icon />}
     {props.label}
   </ButtonWrapper>

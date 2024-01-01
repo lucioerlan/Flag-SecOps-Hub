@@ -1,30 +1,37 @@
-#### Visão Geral
+# Estratégias e Ferramentas de Teste no Flag-SecOps-Hub
 
-Este documento descreve as estratégias e ferramentas de teste implementadas no Flag-SecOps-Hub, destacando como elas contribuem para manter a qualidade, a segurança e a performance do aplicativo.
+## Visão Geral
 
-Estratégias de Teste Implementadas:
+Neste documento, vou detalhar as estratégias e ferramentas de teste que implementei no Flag-SecOps-Hub. Cada uma delas tem um papel crucial em garantir a qualidade, segurança e performance do aplicativo.
 
-**1. Testes Unitários (Jest):**
+## Estratégias de Teste Implementadas
 
-Optei por escrever bastante testes unitários no projeto, os testes unitários são usados para verificar a menor parte testável do código individualmente (funções, métodos).
-Utilizei o Jest + Testing Library para testar os componentes React, garantindo que eles renderizem corretamente e que os eventos do usuário sejam tratados corretamente.
-Benefícios: Assegura que a integração entre módulos ou serviços funcione corretamente, validando os fluxos de negócio e a interação do usuário com a aplicação.
+### 1. Testes Unitários (Jest)
+
+- **Descrição:** Escrevi uma série de testes unitários para verificar partes isoladas do código, como funções e métodos. Para os componentes React, utilizei o Jest juntamente com a Testing Library.
+- **Benefícios:** Isso garante que cada módulo ou serviço funcione corretamente por si só, além de validar a integração entre eles e os fluxos de negócio do aplicativo.
 
 ![coverage](../images/coverage.png)
 
-**2. Testes End-to-End (Cypress):**
-Implementação: Utilizei Cypress para simular ações do usuário na página de login e na página de cadastro, para garantir que nenhuma pessoa consiga acessar o sistema sem estar autenticada.
+### 2. Testes End-to-End (Cypress)
+
+- **Descrição:** Usei o Cypress para simular ações do usuário em páginas críticas como login e cadastro, garantindo a segurança e a funcionalidade dessas interações essenciais.
+- **Benefícios:** Esses testes asseguram que os processos críticos funcionem como esperado, protegendo o sistema contra acessos não autorizados e comportamentos inesperados.
 
 ![cypress](../images/cypress.png)
 
-**3. Testes de Snapshot (Storybook + Jest):**
-Descrição: Captura "fotos" dos componentes UI para garantir que as mudanças visuais sejam intencionais.
-Implementação: Utilizei Storybook para visualizar componentes e Jest para capturar e comparar snapshots ao longo do tempo.
-Benefícios: Detecta alterações visuais inadvertidas, ajudando a manter a consistência do design e a integridade visual da aplicação.
+### 3. Testes com (Storybook + Jest)
+
+- **Descrição:** Utilizei o Storybook principalmente como um ambiente de desenvolvimento de UI para os componentes do React. Isso permite visualizar e interagir com os componentes em isolamento.
+- **Benefícios:** Facilita a identificação de mudanças não intencionais na UI, mantendo a consistência visual.
 
 ![storybook](../images/storybook.png)
 
-**4. Linting e Formatação de Código (ESLint + Prettier):**
-Descrição: Ferramentas utilizadas para garantir que o código siga um conjunto consistente de regras e estilos, prevenindo erros comuns e mantendo o código padronizado.
-Implementação: ESLint identifica padrões problemáticos no código JavaScript/TypeScript, enquanto Prettier formata o código para seguir um estilo consistente.
-Benefícios: Aumenta a legibilidade e facilita a manutenção do código, ajudando a prevenir problemas sutis e a manter um alto padrão de qualidade.
+### 4. Linting e Formatação de Código (ESLint + Prettier)
+
+- **Descrição:** Utilizei o ESLint e o Prettier para manter o código limpo e padronizado. O ESLint ajuda a identificar problemas no código, enquanto o Prettier assegura uma formatação consistente.
+- **Benefícios:** Juntos, essas ferramentas aumentam a legibilidade e facilitam a manutenção do código, além de ajudar a prevenir bugs sutis e manter um padrão de qualidade elevado.
+
+## Conclusão
+
+Implementar essas estratégias e ferramentas de teste foi essencial para garantir a qualidade, segurança e performance do Flag-SecOps-Hub. Elas ajudaram a manter o código limpo e organizado, além de prevenir bugs e comportamentos inesperados.

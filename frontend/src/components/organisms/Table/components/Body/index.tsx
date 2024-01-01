@@ -1,5 +1,5 @@
 import useFeatureFlags from '@/hooks/useFeatureFlags'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { updateToggleFeatureFlagThunk } from '@/store/asyncThunks/updateToggleFeatureFlagThunk'
 import { useAppDispatch } from '@/store/shared'
 
@@ -64,6 +64,8 @@ const TableRow: React.FC<TableRowProps> = ({ row, columns, onEdit, onDelete }: T
                   onChange={() => handleFlagToggleUpdate && handleFlagToggleUpdate(row.id)}
                   id={`toggle-${row.id}`}
                   tabIndex={0}
+                  aria-checked={cellData as boolean}
+                  aria-label="Enable or disable feature flag"
                 />
                 <span />
               </Toggle>

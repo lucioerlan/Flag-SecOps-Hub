@@ -1,6 +1,6 @@
 import { Tab, Card, Table } from '@/components'
 import useCardsFeatureFlags from '@/hooks/useCardsFeatureFlags'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import useTableManager from '@/hooks/useTableManager'
 
 import { HomeLayout, AppLayout, VerticalStack } from './styled'

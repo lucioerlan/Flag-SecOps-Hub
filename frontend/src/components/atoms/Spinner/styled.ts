@@ -1,5 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
+const getColorOrDefault = (color: string | undefined, defaultColor = '#24292F') => {
+  return color || defaultColor
+}
+
 const Spinner = keyframes`
  from {
    transform: rotate(0deg);
@@ -16,7 +20,7 @@ export const Circle = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 2px solid ${({ color }) => (color ? color : '#24292F')};
+  border: 2px solid ${(props) => getColorOrDefault(props.color)};
   border-radius: 50%;
   border-top-color: transparent;
   border-bottom-color: transparent;

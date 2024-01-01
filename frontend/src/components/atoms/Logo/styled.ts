@@ -15,4 +15,12 @@ export const LogoWrapper = styled.img`
   @media (max-width: 1658px) {
     width: 35%;
   }
+  srcset: {
+    2x: {
+      width: 40%;
+    }
+    3x: {
+      width: 50%;
+    }
+  }
 `

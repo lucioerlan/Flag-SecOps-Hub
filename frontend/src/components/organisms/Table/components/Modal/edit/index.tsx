@@ -1,5 +1,5 @@
 import { Input, Button, ErrorMessage, TextArea } from '@/components'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { editFeatureFlagThunk } from '@/store/asyncThunks/editFeatureFlagThunk'
 import { useAppDispatch } from '@/store/shared'
 import { FeatureFlag } from '@/types'
@@ -11,7 +11,6 @@ import { ButtonContainer, ToggleLabel, StyledToggle } from './styled'
 
 type FeatureFlagEditProps = {
   onClose: () => void
-  onFlagEdited: (flag: FeatureFlag) => void
   flag: FeatureFlag
 }
 type FormValues = {
@@ -48,7 +47,7 @@ const FeatureFlagEdit: React.FC<FeatureFlagEditProps> = ({ onClose, flag }: Feat
             className={`form-control ${touched.name && errors.name ? '-invalid' : ''}`}
             placeholder={t('input.nameFeatureFlag')}
           />
-          <ErrorMessage component="div" name="name" className="error-form" />
+          <ErrorMessage component="span" name="name" className="error-form" />
 
           <TextArea
             color="#fff"
@@ -58,7 +57,7 @@ const FeatureFlagEdit: React.FC<FeatureFlagEditProps> = ({ onClose, flag }: Feat
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFieldValue('description', e.target.value)}
             placeholder={t('input.descriptionFeatureFlag')}
           />
-          <ErrorMessage component="div" name="description" className="error-form" />
+          <ErrorMessage component="p" name="description" className="error-form" />
 
           <StyledToggle>
             <input
@@ -67,6 +66,8 @@ const FeatureFlagEdit: React.FC<FeatureFlagEditProps> = ({ onClose, flag }: Feat
               name="state"
               onChange={() => setFieldValue('state', !values.state)}
               checked={values.state}
+              aria-checked={values.state}
+              aria-label="Enable or disable feature flag"
             />
             <span onClick={() => setFieldValue('state', !values.state)}></span>
           </StyledToggle>
@@ -77,7 +78,6 @@ const FeatureFlagEdit: React.FC<FeatureFlagEditProps> = ({ onClose, flag }: Feat
 
           <ButtonContainer>
             <Button
-              aria-label="edit button"
               type="submit"
               color="#fff"
               hover="rgb(235, 233, 233)"

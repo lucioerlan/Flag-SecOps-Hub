@@ -1,6 +1,6 @@
 import { Modal, Toast } from '@/components'
 import useFeatureFlags from '@/hooks/useFeatureFlags'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { TableData } from '@/types'
 import React, { useState } from 'react'
 
@@ -25,39 +25,15 @@ export default function Table({ tableData }: { tableData: TableData }) {
   }
 
   const handleFlagCreate = () => {
-    setModalContent(
-      <FeatureFlagCreate
-        onClose={handleCloseModal}
-        onFlagCreated={() => {
-          handleCloseModal()
-        }}
-      />
-    )
+    setModalContent(<FeatureFlagCreate onClose={handleCloseModal} />)
   }
 
   const handleFlagDelete = (flagId: string, flagName: string) => {
-    setModalContent(
-      <FeatureFlagDelete
-        onClose={handleCloseModal}
-        flagId={flagId}
-        flagName={flagName}
-        onFlagDeleted={() => {
-          handleCloseModal()
-        }}
-      />
-    )
+    setModalContent(<FeatureFlagDelete onClose={handleCloseModal} flagId={flagId} flagName={flagName} />)
   }
 
   const handleFlagEdit = (flag: TableData['data'][0]) => {
-    setModalContent(
-      <FeatureFlagEdit
-        onClose={handleCloseModal}
-        flag={flag}
-        onFlagEdited={() => {
-          handleCloseModal()
-        }}
-      />
-    )
+    setModalContent(<FeatureFlagEdit onClose={handleCloseModal} flag={flag} />)
   }
 
   return (

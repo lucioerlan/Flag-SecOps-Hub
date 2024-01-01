@@ -1,6 +1,6 @@
 import { FlagSecopsHubLogo, Mail, Pass, User } from '@/assets'
 import { Frame, Button, ErrorMessage, Input, Form, Logo } from '@/components'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { FormAuthRegisterValues, OtherAuthRegisterProps, PasswordField } from '@/types'
 import { FormikProps } from 'formik'
 import { useState } from 'react'
@@ -35,6 +35,8 @@ export const RegisterForm = (props: OtherAuthRegisterProps & FormikProps<FormAut
 
         <Input
           aria-label={t('input.name')}
+          aria-invalid={touched.name && errors.name ? 'true' : 'false'}
+          aria-describedby="name-error"
           color="#fff"
           image={User}
           type="text"
@@ -46,6 +48,8 @@ export const RegisterForm = (props: OtherAuthRegisterProps & FormikProps<FormAut
 
         <Input
           aria-label={t('input.email')}
+          aria-invalid={touched.email && errors.email ? 'true' : 'false'}
+          aria-describedby="email-error"
           color="#fff"
           image={Mail}
           type="email"
@@ -57,6 +61,8 @@ export const RegisterForm = (props: OtherAuthRegisterProps & FormikProps<FormAut
 
         <Input
           aria-label={t('input.password')}
+          aria-invalid={touched.password && errors.password ? 'true' : 'false'}
+          aria-describedby="password-error"
           color="#fff"
           image={Pass}
           type={passwordVisibility.password ? 'text' : 'password'}
@@ -72,6 +78,8 @@ export const RegisterForm = (props: OtherAuthRegisterProps & FormikProps<FormAut
 
         <Input
           aria-label={t('input.confirmPassword')}
+          aria-invalid={touched.confirmPassword && errors.confirmPassword ? 'true' : 'false'}
+          aria-describedby="confirmPassword-error"
           color="#fff"
           image={Pass}
           type={passwordVisibility.confirmPassword ? 'text' : 'password'}
@@ -86,7 +94,6 @@ export const RegisterForm = (props: OtherAuthRegisterProps & FormikProps<FormAut
         <ErrorMessage name="confirmPassword" component="div" className="error-form" />
 
         <Button
-          aria-label="Register button"
           type="submit"
           color="#fff"
           hover="rgb(235, 233, 233)"
