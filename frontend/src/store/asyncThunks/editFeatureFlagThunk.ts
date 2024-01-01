@@ -2,7 +2,7 @@ import { updateFeatureFlag } from '@/services/featureFlagsService'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 
-interface EditFeatureFlagPayload {
+type EditFeatureFlagPayload = {
   id: string
   name: string
   description: string
