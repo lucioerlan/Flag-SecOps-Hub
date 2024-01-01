@@ -1,12 +1,12 @@
-# Flag-SecOps-Hub
-
 <div align="center">
 
 ![Interface](./frontend/docs/images/home.png)
+[Explore o design no Figma](https://www.figma.com/file/bm74nLFsmGi07IZCxIOZ3t/Flag-SecOps-Hub?type=design&node-id=0%3A1&mode=design&t=69BMYVDYpLNlbjmj-1).
 
-[Visualize o design no Figma](https://www.figma.com/file/bm74nLFsmGi07IZCxIOZ3t/Flag-SecOps-Hub?type=design&node-id=0%3A1&mode=design&t=69BMYVDYpLNlbjmj-1).
+<!-- Badges Section -->
 
-<!-- Badges -->
+![Frontend](https://github.com/lucioerlan/Flag-SecOps-Hub/actions/workflows/frontend-ci.yml/badge.svg?branch=main)
+![Backend](https://github.com/lucioerlan/Flag-SecOps-Hub/actions/workflows/backend-ci.yml/badge.svg?branch=main)
 
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=lucioerlan_Flag-SecOps-Hub&metric=bugs)](https://sonarcloud.io/summary/new_code?id=lucioerlan_Flag-SecOps-Hub)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=lucioerlan_Flag-SecOps-Hub&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=lucioerlan_Flag-SecOps-Hub)
@@ -24,27 +24,27 @@
 
 </div>
 
-Flag SecOps Hub é um projeto para gestão de Feature Flags, autenticação de usuários e controle de acesso, com foco em segurança, performance e escalabilidade. Desenvolvido com práticas modernas e tecnologias de ponta, visa oferecer uma solução robusta e confiável para gerenciamento dinâmico de recursos e funcionalidades em aplicações.
+Flag SecOps Hub é um projeto para gestão de Feature Flags, com foco em segurança, performance e escalabilidade. Desenvolvido com práticas modernas e tecnologias de ponta, o projeto visa fornecer uma solução eficiente e confiável para o gerenciamento dinâmico de recursos em aplicações.
 
 ---
 
 ## 🛡️ Visão Geral do Projeto
 
-- **Objetivo**: Facilitar a gestão de Feature Flags e controle de acesso em aplicações.
-- **Usuários**: Desenvolvedores, gerentes de projeto e equipes de QA que buscam uma gestão eficiente e segura de funcionalidades.
-- **Aplicação**: Dividido em duas partes principais - Backend e Frontend, trabalhando em conjunto para uma solução completa.
+- **Objetivo**: Simplificar a gestão de Feature Flags.
+- **Usuários-alvo**: Desenvolvedores, gerentes de projeto e equipes de QA em busca de uma gestão eficiente e segura.
+- **Estrutura**: Composto por Backend e Frontend, integrando-se para fornecer uma solução completa.
 
 ---
 
 ## 🏗️ Arquitetura e Tecnologias
 
-### Backend
+#### Backend
 
 - **Arquitetura**: Clean Architecture e DDD para modularidade e manutenção eficiente.
 - **Tecnologias**: Node.js, TypeScript, Fastify, MongoDB, Jest, Docker, Swagger, Winston, entre outros.
 - **Segurança**: Implementações específicas para garantir a proteção dos dados e das operações.
 
-### Frontend
+#### Frontend
 
 - **Arquitetura**: Design Atômico para organização eficiente e manutenível dos componentes.
 - **Tecnologias**: React, Vite, Redux, Formik, Styled Components, i18next, React Testing Library, Cypress, Storybook, entre outros.
@@ -57,54 +57,31 @@ Flag SecOps Hub é um projeto para gestão de Feature Flags, autenticação de u
 
 ### 🐳 Docker Compose
 
-Para executar o projeto utilizando Docker Compose:
-
-1. Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
-2. Na raiz do projeto, execute o comando:
-   ```sh
-   docker-compose up
-   ```
+1. Certifique-se de ter Docker e Docker Compose.
+2. Execute `docker-compose up` na raiz do projeto.
 3. O frontend vai estar disponivel em `http://localhost:3000` e o backend em `http://localhost:5000`. Isso vai subir tanto o backend quanto o frontend em containers Docker.
-
----
 
 ### 🧰 Makefile
 
 Para facilitar a execução de comandos, utilize o arquivo Makefile disponível na raiz do projeto:
 
-Para construir as imagens Docker:
+- **Para construir as imagens Docker:**: `make build`
+- **Para executar o projetoo**: `make up`
+- **Para parar os serviços**: `make down`
 
-```sh
-make build
-```
+## 📚 Documentação
 
-Para executar o projeto:
+Cada parte do projeto (Backend e Frontend) possui documentação específica detalhando sua configuração, uso e características.
 
-```sh
-make up
-```
-
-Para parar os serviços:
-
-```sh
-make down
-```
-
----
-
-## 📚 Documentação Completa
-
-A documentação do projeto está organizada em documentações específicas para o backend e o frontend, que podem ser acessadas em seus respectivos diretórios `docs`. Veja abaixo como acessar cada uma delas:
-
-### Backend
+#### Backend
 
 - **Documentação Interativa Swagger**: Acesse em `http://localhost:5000/documentation` após iniciar o projeto.
-- **Docsify**: Para uma visão mais detalhada, a documentação completa está disponível em [Docsify backend](https://github.com/lucioerlan/Flag-SecOps-Hub/tree/main/backend/docs). Execute `npm run docs:serve` na raiz do backend para iniciar o servidor de documentação Docsify.
+- **Docsify**: Para uma visão mais detalhada, a documentação completa está disponível em [Docsify backend](./backend/docs/README.md). Execute `npm run docs:serve` na raiz do backend para iniciar o servidor de documentação Docsify.
 
-### Frontend
+#### Frontend
 
 - **Storybook**: Explore componentes e guias no Storybook acessando `http://localhost:6006` após executar o comando `npm run storybook`.
-- **Docsify**: A documentação completa está disponível em [Docsify frontend](https://github.com/lucioerlan/Flag-SecOps-Hub/tree/main/frontend/docs). Execute `npm run docs:serve` na raiz do frontend para iniciar o servidor de documentação Docsify.
+- **Docsify**: Para uma visão mais detalhada, a documentação completa está disponível em [Docsify frontend](./frontend/docs/README.md). Execute `npm run docs:serve` na raiz do frontend para iniciar o servidor de documentação Docsify.
 
 ---
 
@@ -119,22 +96,28 @@ A documentação do projeto está organizada em documentações específicas par
 
 ## 🧪 Testes
 
-- **Cypress 🌲**: Para executar os testes end-to-end com Cypress, execute o comando `npm run test:cypress:open` e acesse `http://localhost:8080`.
+Para executar os testes end-to-end com Cypress, Use `npm run test:cypress:open` para interface interativa ou `npm run test:cypress:run` para execução headless.
 
 ---
 
 ## 🌟 CI/CD com GitHub Actions e SonarCloud
 
-O projeto possui integração contínua e entrega contínua (CI/CD) com o GitHub Actions. Os resultados de qualidade de código são monitorados pelo **SonarCloud**, incluindo métricas de bugs, code smells, cobertura de código e muito mais. O CD é realizado na Vercel.
+O projeto possui integração contínua e entrega contínua (CI/CD) com o GitHub Actions. Os resultados de qualidade de código são analisados pelo **SonarCloud**, incluindo métricas de bugs, code smells, cobertura de código e muito mais. O CD é realizado na Vercel.
 
 ---
 
 ## 🧑‍💻 Contribuição
 
-Contribuições são sempre bem-vindas! Seja melhorando a documentação, adicionando novas funcionalidades ou corrigindo bugs, sinta-se à vontade para criar um pull request ou abrir uma issue.
+Contribuições são bem-vindas para melhorar a documentação, adicionar funcionalidades ou corrigir bugs. Crie um pull request ou abra uma issue para colaborar.
+
+---
+
+## 🚧 Melhorias Futuras
+
+Para uma lista detalhada das melhorias futuras planejadas para o projeto, incluindo atualizações técnicas e otimizações, por favor visite o seguinte link: [Melhorias Futuras](https://github.com/lucioerlan/Flag-SecOps-Hub/discussions/68)
 
 ---
 
 ## 📃 Licença
 
-Distribuído sob a Licença MIT. Veja `LICENSE` para mais informações.
+O projeto é distribuído sob a Licença MIT. Veja [`LICENSE`](https://opensource.org/licenses/MIT) para mais informações.

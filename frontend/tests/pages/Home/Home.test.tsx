@@ -1,9 +1,11 @@
 import Home from '@/pages/Home'
+import store from '@/store'
 import { render, screen } from '@testing-library/react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { Provider as StoreProvider } from 'react-redux'
 
-import { mockCardsFeatureFlags, mockTableManager } from './__mocks__/payloads'
+import { mockCardsFeatureFlags, mockTableManager } from '../__mocks__/payloads'
 
-jest.mock('@/store/shared')
 jest.mock('@/hooks/useCardsFeatureFlags', () => ({
   __esModule: true,
   default: jest.fn(() => mockCardsFeatureFlags())
@@ -14,35 +16,32 @@ jest.mock('@/hooks/useTableManager', () => ({
   default: jest.fn(() => mockTableManager())
 }))
 
-jest.mock('react-query', () => ({
-  useQueryClient: () => ({
-    invalidateQueries: jest.fn()
-  }),
-  useQuery: jest.fn(() => ({
-    data: mockTableManager().data,
-    isLoading: false,
-    error: null
-  }))
-}))
+describe('Home Component', () => {
+  const queryClient = new QueryClient()
 
-describe('Home', () => {
   beforeEach(() => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <StoreProvider store={store}>
+          <Home />
+        </StoreProvider>
+      </QueryClientProvider>
+    )
+  })
+
+  afterEach(() => {
     jest.clearAllMocks()
-    render(<Home />)
   })
 
-  it('should render the home page', () => {
-    const homeElement = screen.getByTestId('home')
-    expect(homeElement).toBeInTheDocument()
+  it('renders the home page', () => {
+    expect(screen.getByTestId('home')).toBeInTheDocument()
   })
 
-  it('should render the cards', () => {
-    const cardElement = screen.getByTestId('card')
-    expect(cardElement).toBeInTheDocument()
+  it('renders the cards', () => {
+    expect(screen.getByTestId('card')).toBeInTheDocument()
   })
 
-  it('should render the table', () => {
-    const tableElement = screen.getByTestId('table')
-    expect(tableElement).toBeInTheDocument()
+  it('renders the table', () => {
+    expect(screen.getByTestId('table')).toBeInTheDocument()
   })
 })

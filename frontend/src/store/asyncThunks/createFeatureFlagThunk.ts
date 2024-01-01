@@ -2,7 +2,7 @@ import { createFeatureFlag } from '@/services/featureFlagsService'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 
-interface CreateFeatureFlagPayload {
+type CreateFeatureFlagPayload = {
   name: string
   description: string
   state: boolean

@@ -1,14 +1,18 @@
 import styled from 'styled-components'
 
+const getColorOrDefault = (props: { color?: string }, defaultColor = '#24292F') => {
+  return props.color || defaultColor
+}
+
 export const ButtonWrapper = styled.button`
   padding: 12px 38px;
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 2px;
   border: none;
-  border: 1px solid ${({ color }) => (color ? color : '#24292F')};
+  border: 1px solid ${(props) => getColorOrDefault(props)};
   border-radius: 12px;
-  color: ${({ color }) => (color ? color : '#24292F')};
+  color: ${(props) => getColorOrDefault(props)};
   background: rgba(255, 255, 255, 0);
   outline: 0;
   cursor: pointer;
@@ -23,8 +27,8 @@ export const ButtonWrapper = styled.button`
   &:hover {
     background: none;
     border: none;
-    border: solid 2px ${({ color }) => (color ? color : '#24292F')};
-    color: ${({ color }) => (color ? color : '#24292F')};
+    border: solid 2px ${(props) => getColorOrDefault(props)};
+    color: ${(props) => getColorOrDefault(props)};
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;

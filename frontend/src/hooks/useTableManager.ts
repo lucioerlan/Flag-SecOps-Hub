@@ -3,16 +3,15 @@ import { capitalize, createFormattedHeaders, filterDataByQuery, formatDate, pagi
 import { useState, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
-import { useI18n } from './useI18n'
+import useI18n from './useI18n'
 
-export default function useTableManager() {
+export default function useTableManager(itemsPerPage = 25) {
   const t = useI18n()
   const featureFlags = useSelector((state: BodyFeatureFlags) => state.featureFlags.body || [])
 
   const [tableData, setTableData] = useState<FeatureFlag[]>([])
   const [currentPage, setCurrentPage] = useState(1)
 
-  const itemsPerPage = 25
   const columnTranslations = {
     name: t('table.columns.name'),
     description: t('table.columns.description'),

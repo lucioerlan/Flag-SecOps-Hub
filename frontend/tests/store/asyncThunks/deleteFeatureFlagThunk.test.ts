@@ -3,12 +3,7 @@ import { deleteFeatureFlagThunk } from '@/store/asyncThunks/deleteFeatureFlagThu
 import { toast } from 'react-toastify'
 
 jest.mock('@/services/featureFlagsService')
-jest.mock('react-toastify', () => ({
-  toast: {
-    success: jest.fn(),
-    error: jest.fn()
-  }
-}))
+jest.mock('react-toastify')
 
 describe('deleteFeatureFlagThunk', () => {
   const dispatch = jest.fn()

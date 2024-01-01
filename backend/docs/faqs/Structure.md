@@ -1,25 +1,31 @@
-#### Visão Geral
+# Estrutura Organizacional do Código do Backend do Flag SecOps Hub
 
-Este documento descreve a estrutura organizacional do código do backend do Flag SecOps Hub, detalhando a disposição dos diretórios, arquivos e a lógica por trás da organização adotada.
+## Visão Geral
 
-**Organização dos Diretórios e Arquivos**
+Este documento explica como organizei a estrutura do código do backend do Flag SecOps Hub. A disposição dos diretórios e arquivos foi pensada para refletir claramente as diferentes camadas da arquitetura, separando as responsabilidades e tornando mais fácil entender e gerenciar o código.
 
-A estrutura do projeto está organizada de forma a refletir claramente as camadas de arquitetura, separando preocupações e facilitando a localização e o gerenciamento de código. Aqui está como os principais diretórios estão organizados:
+## Organização dos Diretórios e Arquivos
 
-- **/src** - Diretório Raiz:
-- **/data:** Contém os módulos responsáveis pelo gerenciamento de dados, incluindo acesso a bancos de dados, repositórios e qualquer lógica relacionada à persistência e recuperação de dados.
-- **/domain:** O coração do sistema, onde as entidades, regras de negócio e interfaces de repositório são definidas. Este diretório reflete o modelo do domínio e é mantido isolado de influências externas.
-- **/infra:** Implementa os detalhes técnicos necessários para o sistema funcionar, como configuração de banco de dados, comunicação com serviços externos e implementações concretas de interfaces definidas no domínio.
-- **/main:** Ponto de entrada da aplicação. Contém a configuração inicial, o servidor HTTP, a ligação de rotas e a inicialização de serviços essenciais.
-- **/presentation:** Gerencia a camada de apresentação, tratando de requisições e respostas, definindo os controladores, rotas e qualquer lógica relacionada à interação com o cliente ou serviços externos.
+A estrutura do projeto está montada para mostrar as camadas de arquitetura e separar as diferentes partes do código. Aqui está a disposição dos principais diretórios:
 
-**Explicação da Estrutura**
+- **/src - Diretório Raiz:**
+  - **/data:** Aqui ficam os módulos que lidam com dados, incluindo acesso a bancos, repositórios e toda lógica relacionada à guarda e recuperação de dados.
+  - **/domain:** É o coração do sistema, com as entidades, regras de negócio e interfaces de repositório. Este diretório mostra o modelo do domínio e fica isolado de influências externas.
+  - **/infra:** Cuida dos detalhes técnicos para o sistema rodar, como configuração de bancos, comunicação com serviços externos e implementações concretas das interfaces do domínio.
+  - **/main:** É o ponto de entrada da aplicação, contendo a configuração inicial, servidor HTTP, rotas e a inicialização de serviços essenciais.
+  - **/presentation:** Trata da camada de apresentação, gerenciando requisições e respostas, definindo controladores, rotas e qualquer lógica voltada para interação com o usuário ou serviços externos.
 
-A organização do código no Flag SecOps Hub foi projetada para facilitar o desenvolvimento e a manutenção do sistema. Aqui estão alguns pontos-chave sobre a estrutura:
+## Explicação da Estrutura
 
-- Separation of Concerns: Cada diretório tem um propósito claro e específico, reduzindo o acoplamento e aumentando a coesão. Isso simplifica a compreensão do código e facilita a manutenção e a expansão do sistema.
-- Reflecting Architecture: A estrutura reflete a arquitetura Clean e DDD adotada, com uma clara distinção entre as camadas de domínio, aplicação, infraestrutura e apresentação. Isso garante que o código de negócios permaneça isolado de detalhes de implementação e frameworks.
-- Modularity: O código é modular, com componentes e funcionalidades agrupados logicamente. Isso permite reutilizar código, substituir partes do sistema com facilidade e gerenciar dependências de forma mais eficaz.
-- Scalability: A estrutura é projetada para crescer com o projeto. Novos componentes, serviços e módulos podem ser adicionados de forma organizada, mantendo a base de código manejável e compreensível.
+A estrutura foi pensada para facilitar o desenvolvimento e a manutenção do sistema. Aqui estão os pontos-chave sobre a organização:
+
+- **Separação de Preocupações:** Cada diretório tem um papel bem definido, diminuindo o acoplamento e aumentando a clareza. Isso torna mais fácil entender o código e facilita a manutenção e o crescimento do sistema.
+- **Refletindo a Arquitetura:** A organização espelha a arquitetura Clean e DDD que escolhemos, com distinção clara entre domínio, aplicação, infraestrutura e apresentação. Isso assegura que o código de negócios fique isolado de detalhes técnicos e frameworks.
+- **Modularidade:** O código é modular, com componentes e funcionalidades agrupados de forma lógica. Isso permite a reutilização de código, a substituição fácil de partes do sistema e um melhor gerenciamento das dependências.
+- **Escalabilidade:** A estrutura está pronta para crescer junto com o projeto. É possível adicionar novos componentes, serviços e módulos de forma organizada, mantendo a base de código compreensível e fácil de lidar.
+
+## Conclusão
+
+A organização do código do backend do Flag SecOps Hub foi feita pensando em claridade, manutenção e escalabilidade.
 
 ![estrutura](../images/estrutura.png)

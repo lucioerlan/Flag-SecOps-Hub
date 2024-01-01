@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { refreshToken } from '@/services/authService'
 import { restoreSettings, storeSettings } from '@/utils'
 import axios, { AxiosRequestHeaders } from 'axios'

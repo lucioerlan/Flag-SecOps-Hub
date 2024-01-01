@@ -1,5 +1,5 @@
 import { Tab } from '@/components'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { useNavigate } from 'react-router-dom'
 
 import { NotfoundContainer, Title, Subtitle, BackButton, EmptyImage } from './styled'

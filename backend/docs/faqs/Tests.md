@@ -1,40 +1,46 @@
-#### Visão Geral
+# Estratégia e Implementação dos Testes no Backend do Flag SecOps Hub
 
-Este documento descreve a estratégia e implementação dos testes que realizei no backend do Flag SecOps Hub. Como desenvolvedor, acredito que os testes são vitais para garantir a qualidade, estabilidade e confiabilidade do sistema. Aqui, detalho como utilizei testes unitários para validar a lógica e as funcionalidades do projeto, garantindo que o código não só atenda às expectativas de negócio, mas também seja robusto e manutenível.
+## Visão Geral
 
-**Estratégia de Testes**
-Ferramenta que utilizei: Jest
+Este texto detalha a estratégia e a execução dos testes que fiz no backend do Flag SecOps Hub. Como desenvolvedor, entendo que testar é essencial para assegurar a qualidade, estabilidade e confiança no sistema. Aqui, explico como usei testes unitários para checar a lógica e as funcionalidades do projeto, com o objetivo de fazer o código não só atender as expectativas do negócio.
 
-Resolvi escolher o Jest pela sua eficiência e facilidade de uso, o Jest fornece uma estrutura de testes completa e bem documentada, com suporte a mocks, stubs, spy, e outros recursos úteis.
+## Estratégia de Testes
 
-**Testes Unitários**
+### Ferramenta Utilizada: Jest
 
-- Implementei testes unitários focados em pequenas partes do sistema, geralmente funções ou métodos individuais. Cada teste unitário é independente e visa verificar se uma unidade específica funciona conforme esperado.
-- Padrão Triple-A: Segui o padrão Arrange-Act-Assert para estruturar meus testes. Primeiro, eu configuro o ambiente necessário para o teste (Arrange), executo a unidade sob teste (Act) e, por fim, verifico se o resultado corresponde ao esperado (Assert).
-- Mocking e Stubs: Utilizei mocks e stubs para simular dependências externas, garantindo que os testes se concentrem exclusivamente na lógica que está sendo testada e não sejam afetados por falhas ou comportamentos externos.
+Escolhi o Jest por ser eficiente e simples de usar. Ele oferece um ambiente completo para testes, suportando mocks, stubs, spys, e outros recursos úteis.
 
-**Mocking e Stubs:**
+### Testes Unitários
 
-Mocks e stubs é muito bom para isolar os testes de dependências externas, permitindo que cada teste unitário se concentre exclusivamente na lógica sob teste.
+- **Implementação:** Fiz testes unitários que se concentram em partes menores do sistema, como funções ou métodos individuais. Cada teste é independente e busca verificar se uma parte específica funciona como deve.
+- **Padrão Triple-A:** Usei o padrão Arrange-Act-Assert para estruturar os testes. Primeiro, arrumo o ambiente necessário (Arrange), executo a unidade que está sendo testada (Act) e depois confiro se o resultado é o esperado (Assert).
+- **Mocking e Stubs:** Empreguei mocks e stubs para simular dependências externas, focando os testes na lógica em questão e evitando interferências de elementos externos.
 
-**Foco dos Testes**
+### Foco dos Testes
 
-Regras de Negócio: Priorizei o teste de funções que executam regras de negócio críticas e manipulação de dados, garantindo que elas funcionem corretamente sob várias condições.
--Validações: As funções que validam a entrada de dados ou formatam a saída são testadas para garantir que rejeitem entradas inválidas e formatem os dados corretamente.
--Integrações Importantes: Embora os testes unitários se concentrem na lógica interna, também verificamos como as unidades se integram a serviços críticos, utilizando mocks para representar essas integrações externas.
--Importância dos Testes Unitários
--Os testes unitários não são apenas uma tarefa de verificação, mas uma parte integrante do desenvolvimento. Eles aumentam a confiança nas mudanças realizadas, facilitam a detecção de erros precocemente, e funcionam como documentação viva do comportamento esperado do sistema.
+- **Regras de Negócio:** Me concentrei em testar funções críticas para as regras de negócio e manipulação de dados, assegurando seu funcionamento correto em várias situações.
+- **Validações:** Testei funções que validam entradas ou formatam saídas para garantir que rejeitem dados ruins e organizem os dados corretamente.
+- **Integrações Importantes:** Além da lógica interna, chequei como as partes se conectam a serviços essenciais, usando mocks para essas integrações externas.
+
+### Importância dos Testes Unitários
+
+Os testes unitários são cruciais não só para checar o sistema, mas como uma parte ativa do desenvolvimento. Eles aumentam a segurança nas mudanças, ajudam a encontrar erros cedo e servem como uma descrição viva do comportamento esperado do sistema.
 
 ![jest](../images/jest.png)
 
-**Integração com Swagger para Documentação da API**
+## Integração com Swagger para Documentação da API
 
-Swagger-UI: Implementei o Swagger-UI no projeto para criar uma documentação interativa da API. Isso permite que os usuários e desenvolvedores visualizem e interajam com a API de maneira fácil e clara, facilitando o entendimento e o uso dos endpoints disponíveis.
+### Swagger-UI
 
-**Vantagens da Integração com Swagger:**
+Implementei o Swagger-UI para criar uma documentação interativa da API.
 
-Visualização Intuitiva: O Swagger oferece uma interface gráfica onde os endpoints, parâmetros, e modelos de dados são apresentados de forma clara e estruturada.
-Interatividade: Usuários podem testar diretamente os endpoints através da interface do Swagger, o que ajuda na validação rápida das funcionalidades e no entendimento do comportamento da API.
-Manutenção e Evolução: A documentação evolui junto com a API, assegurando que as mudanças sejam refletidas em tempo real e que a documentação permaneça atualizada e relevante.
+### Vantagens da Integração com Swagger
 
-![swagger](../images/swagger.png)
+- **Visualização Intuitiva:** O Swagger mostra endpoints, parâmetros e modelos de dados de forma clara e organizada.
+- **Interatividade:** Permite testar os endpoints diretamente na interface, ajudando a validar as funcionalidades rapidamente.
+
+  ![swagger](../images/swagger.png)
+
+  ## Conclusão
+
+A estratégia de testes e a integração com ferramentas como Jest e Swagger fortalecem o desenvolvimento e a manutenção do Flag SecOps Hub.

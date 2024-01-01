@@ -1,6 +1,6 @@
 import { ButtonWrapper } from './styled'
 
-type ButtonProps = {
+export type ButtonProps = {
   color?: string
   disabled?: boolean
   label: string

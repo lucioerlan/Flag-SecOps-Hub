@@ -1,0 +1,22 @@
+{
+  "user": {
+    "email": "erlanlucio@hotmail.com",
+    "password": "123456"
+  },
+  "viewports": [
+    { "size": "macbook-15", "width": 1440, "height": 900 },
+    { "size": "macbook-13", "width": 1280, "height": 800 },
+    { "size": "iphone-4", "width": 320, "height": 480 },
+    { "size": "samsung-s10", "width": 360, "height": 760 },
+    { "size": "macbook-11", "width": 1366, "height": 768 },
+    { "size": "ipad-2", "width": 768, "height": 1024 },
+    { "size": "ipad-pro", "width": 1024, "height": 1366 },
+    { "size": "iphone-6+", "width": 414, "height": 736 },
+    { "size": "iphone-6", "width": 375, "height": 667 },
+    { "size": "samsung-note9", "width": 414, "height": 846 },
+    { "size": "pixel-2", "width": 411, "height": 731 },
+    { "size": "iphone-5", "width": 320, "height": 568 },
+    { "size": "pixel-2xl", "width": 411, "height": 823 },
+    { "size": "galaxy-s5", "width": 360, "height": 640 }
+  ]
+}

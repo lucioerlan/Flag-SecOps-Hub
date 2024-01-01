@@ -23,6 +23,12 @@ export const ModalContent = styled.div`
   width: auto;
   overflow: hidden;
   text-align: center;
+
+  @media (max-width: 450px) {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 20px;
+  }
 `
 
 export const ModalHeader = styled.div`

@@ -1,6 +1,6 @@
-## Bem-vindo ao Flag SecOps Hub - Documentação
+## Bem-vindo ao Frontend do Flag SecOps Hub - Documentação
 
-Bem-vindo à documentação central do Flag SecOps Hub! Abaixo você encontrará links para cada documento relacionado ao projeto. Navegue por eles para obter informações detalhadas sobre arquitetura, práticas de codificação, padrões de design, e muito mais.
+Bem-vindo à documentação central do **frontend** do Flag SecOps Hub! Esta documentação fornece uma visão detalhada da interface do usuário, arquitetura, design, testes e outros aspectos técnicos do projeto. Navegue pelos links abaixo para acessar a documentação de cada área do projeto.
 
 ## Menu de Documentação
 
