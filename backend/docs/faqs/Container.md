@@ -1,26 +1,31 @@
-#### Visão Geral
+# Implementação de Containers no Flag SecOps Hub
 
-Neste documento, vou detalhar como implementei containers para isolar e gerenciar o ambiente do backend e frontend do Flag SecOps Hub. Utilizei Docker e Docker Compose, ferramentas para garantir que o aplicativo seja fácil de configurar, testar e implantar, independentemente do ambiente local ou de produção.
+## Visão Geral
 
-**Por Que Containers?**
-Escolhi usar containers por vários motivos:
+Este documento mostra como organizei e gerenciei os ambientes do backend e frontend do Flag SecOps Hub usando Docker e Docker Compose. Essas ferramentas ajudam a tornar a aplicação mais simples de ajustar, testar e colocar em funcionamento, em qualquer lugar.
 
-- Isolamento: Containers encapsulam o ambiente de execução do aplicativo, garantindo que funcione consistentemente em diferentes máquinas e ambientes.
-- Eficiência: Permitem uma utilização mais eficiente dos recursos em comparação com as máquinas virtuais tradicionais, pois compartilham o mesmo kernel do sistema operacional.
-- Reprodutibilidade: A configuração do ambiente é definida em arquivos (como Dockerfile e docker-compose.yml), permitindo que qualquer pessoa no projeto recrie o mesmo ambiente rapidamente.
-- Portabilidade: Uma vez criado, o container pode ser executado em qualquer sistema que tenha Docker instalado, facilitando a implantação e o escalonamento.
-  Docker e Docker Compose
+## Por Que Usar Containers?
+
+Escolhi os containers por vários motivos práticos:
+
+- **Isolamento:** Containers garantem que o aplicativo rode do mesmo jeito em diferentes lugares, cuidando do ambiente de execução.
+- **Uso Eficiente dos Recursos:** Eles usam menos recursos e são mais ágeis que as máquinas virtuais tradicionais, já que compartilham o mesmo sistema central do computador.
+- **Reprodutibilidade:** As configurações de ambiente ficam todas em arquivos como Dockerfile e docker-compose.yml, facilitando para qualquer um no projeto montar o mesmo ambiente rapidinho.
+- **Portabilidade:** Uma vez prontos, os containers podem ser rodados em qualquer sistema com Docker, facilitando a vida na hora de colocar o projeto para rodar em diferentes lugares.
+
+### Dockerfile e Docker Compose
 
 **Dockerfile:**
 
-Criei um Dockerfile que define a imagem do backend do Flag SecOps Hub. Ele especifica o sistema base, as dependências necessárias, os arquivos do projeto e os comandos para rodar o aplicativo.
-O Dockerfile é o ponto de partida para construir a imagem Docker do backend, garantindo que todas as dependências e configurações sejam incluídas e preparadas para execução.
-Docker Compose:
+- Preparei um Dockerfile para o backend do Flag SecOps Hub, indicando o sistema base, as dependências, os arquivos do projeto e os comandos para ativar a aplicação. Esse arquivo é a base para montar a imagem Docker do backend, garantindo que tudo que é necessário esteja pronto para uso.
 
-Para simplificar a gestão de múltiplos containers e suas interdependências, utilizei o Docker Compose. Ele permite definir e rodar múltiplos containers Docker como um único serviço.
+**Docker Compose:**
 
-Com um arquivo docker-compose.yml, configurei o serviço do backend, banco de dados e o frontend, definindo como eles se interconectam e compartilham dados.
-Fluxo de Trabalho e Gestão
-Desenvolvimento e Testes:
+- Para lidar com vários containers e como eles se relacionam entre si de maneira mais prática, escolhi o Docker Compose. Com ele, defino e rodo vários containers Docker como se fossem um serviço só.
+- Com o arquivo docker-compose.yml, organizei o serviço do backend, banco de dados e frontend, definindo como eles se conectam e trocam informações.
+
+## Conclusão
+
+Escolher containers com Docker e Docker Compose para o Flag SecOps Hub tornou tudo mais prático, facilitando a gestão do ambiente de desenvolvimento e produção.
 
 ![container](../images/container.png)
