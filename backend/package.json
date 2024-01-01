@@ -14,7 +14,7 @@
     "lint-staged-husky": "lint-staged",
     "patch": "npm version patch -m \"release: version %s\" && git push --tags && git push",
     "release": "release-it",
-    "start": "node -r ./tsconfig-paths-dist.js ./dist/app.js",
+    "start": "node -r ./tsconfig-paths-dist.js ./dist/main/config/app.js",
     "test": "jest --coverage --passWithNoTests --silent",
     "test:dev": "jest --verbose",
     "test:quick": "jest --passWithNoTests --silent",
