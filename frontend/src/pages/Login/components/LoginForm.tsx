@@ -1,6 +1,6 @@
 import { FlagSecopsHubLogo, Mail, Pass } from '@/assets'
 import { Frame, Button, ErrorMessage, Input, Form, Logo } from '@/components'
-import { useI18n } from '@/hooks/useI18n'
+import useI18n from '@/hooks/useI18n'
 import { FormAuthLoginValues, OtherAuthLoginProps } from '@/types'
 import { FormikProps } from 'formik'
 import { useState } from 'react'
@@ -32,6 +32,8 @@ export const LoginForm = (props: OtherAuthLoginProps & FormikProps<FormAuthLogin
 
         <Input
           aria-label={t('input.email')}
+          aria-invalid={touched.email && errors.email ? 'true' : 'false'}
+          aria-describedby="email-error"
           color="#fff"
           image={Mail}
           type="email"
@@ -43,6 +45,8 @@ export const LoginForm = (props: OtherAuthLoginProps & FormikProps<FormAuthLogin
 
         <Input
           aria-label={t('input.password')}
+          aria-invalid={touched.password && errors.password ? 'true' : 'false'}
+          aria-describedby="password-error"
           color="#fff"
           image={Pass}
           type={showPassword ? 'text' : 'password'}
@@ -54,7 +58,6 @@ export const LoginForm = (props: OtherAuthLoginProps & FormikProps<FormAuthLogin
         <ErrorMessage component="div" name="password" className="error-form" aria-live="assertive" />
 
         <Button
-          aria-label="Login button"
           type="submit"
           color="#fff"
           hover="rgb(235, 233, 233)"

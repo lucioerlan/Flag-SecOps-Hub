@@ -8,12 +8,7 @@ type PasswordProps = {
 }
 
 export const Password = ({ showPassword, handleClickPassword }: PasswordProps) => (
-  <PasswordView
-    style={{ width: 0 }}
-    aria-label="toggle password vibility"
-    onClick={handleClickPassword}
-    aria-pressed={showPassword}
-  >
+  <PasswordView style={{ width: 0 }} aria-label="Show password" onClick={handleClickPassword}>
     {showPassword ? (
       <img src={EyeOff} alt="Hide password" className="togglePasswordLogin" />
     ) : (

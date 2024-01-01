@@ -62,4 +62,12 @@ export const EmptyImage = styled.img.attrs({
   max-width: 250px;
   height: auto;
   margin-bottom: 15px;
+  srcset: {
+    2x: {
+      width: 60%;
+    }
+    3x: {
+      width: 70%;
+    }
+  }
 `
