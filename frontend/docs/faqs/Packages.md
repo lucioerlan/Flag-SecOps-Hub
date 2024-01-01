@@ -28,8 +28,8 @@ Justificativa: Formik, em conjunto com Yup, proporciona uma solução para a con
   ![formik](../images/formik.png)
 
 **i18next e react-i18next**
-Função: Facilita a internacionalização e localização, permitindo a tradução do site para várias línguas.
-Justificativa: i18next e react-i18next são escolhidos pela sua flexibilidade e facilidade em adicionar suporte multilíngue. Permitem:
+Função: Facilita a internacionalização e localização, permitindo a tradução do site para diferentes idiomas.
+Justificativa: Escolhi i18next e react-i18next pela sua flexibilidade e facilidade em adicionar suporte multilíngue. Ele oferece uma série de recursos que tornam a internacionalização mais simples e eficiente:
 
 - Centralização de Recursos: Todos os textos são gerenciados em arquivos de recursos separados, facilitando atualizações e manutenções.
 - Detecção de Idioma Automática: Detecta o idioma do usuário e carrega as traduções apropriadas, proporcionando uma experiência personalizada.
