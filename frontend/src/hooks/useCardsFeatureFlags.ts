@@ -3,7 +3,7 @@ import { calculateSummary } from '@/utils'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
-import { useI18n } from './useI18n'
+import useI18n from './useI18n'
 
 export default function useCardsFeatureFlags() {
   const t = useI18n()
